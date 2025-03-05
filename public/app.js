@@ -5,8 +5,10 @@ function updateCheckoutButton() {
     
     if (cartItems.children.length > 0) {
         checkoutBtn.style.display = "block"; // إظهار الزر إذا كانت السلة غير فارغة
+        checkoutBtn.onclick = checkout; // إضافة حدث النقر على زر إكمال الطلب
     } else {
         checkoutBtn.style.display = "none"; // إخفاء الزر إذا كانت السلة فارغة
+        checkoutBtn.onclick = null; // إزالة حدث النقر إذا كانت السلة فارغة
     }
 }
 
