@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
 JSON.parse(localStorage.getItem("cart")) || [];
 
 document.getElementById('products').value = cart.join(", ");
-});
 
     // إضافة المنتجات إلى السلة عند النقر على زر "أضف إلى السلة"
     document.querySelectorAll(".add-to-cart").forEach(button => {
@@ -12,6 +11,7 @@ document.getElementById('products').value = cart.join(", ");
             let productName = this.parentElement.querySelector("h3").textContent.trim();
             addToCart(productName);
         });
+    });
 
     // التحقق من الحقول وتخزين البيانات تلقائيًا عند كل تغيير
     document.getElementById("name")?.addEventListener("input", savePersonalInfo);
@@ -159,8 +159,7 @@ function savePersonalInfo() {
     // التأكد من أن جميع الحقول قد تم ملؤها
     if (name && address && phone) {
         let personalInfo = { name, address, phone };
-        localStorage.setItem("personalInfo", JSON.stringify(personalInfo));
-    }
+        localStorage.setItem("personalInfo", JSON.stringify(personalInfo));    }
 }
 
 // استرجاع المعلومات الشخصية من localStorage

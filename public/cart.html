@@ -73,7 +73,7 @@
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
             let personalInfo = JSON.parse(localStorage.getItem("personalInfo"));
 
-            if (!personalInfo) {
+            if (!personalInfo.name || !personalInfo.address || !personalInfo.phone) {
                 alert("يرجى إدخال المعلومات الشخصية أولاً.");
                 return;
             }
