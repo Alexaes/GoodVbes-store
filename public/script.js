@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     updateCartUI();
-    let cart =
-JSON.parse(localStorage.getItem("cart")) || [];
-
-document.getElementById('products').value = cart.join(", ");
 
     // إضافة المنتجات إلى السلة عند النقر على زر "أضف إلى السلة"
     document.querySelectorAll(".add-to-cart").forEach(button => {
@@ -62,6 +58,8 @@ function updateCartUI() {
     let checkoutButton = document.getElementById("checkout-button");
     let emptyMessage = document.getElementById("cart-empty");
     let clearCartButton = document.getElementById("clear-cart");
+    let closeCartButton = document.getElementById("close-cart");
+    addEventListener("click", toggleCart);
 
     if (!cartItemsContainer || !totalPriceElement) return;
 
@@ -133,13 +131,6 @@ function checkout() {
     }
 
     alert(`✅ تم إتمام طلبك بنجاح! \nالإسم: ${personalInfo.name} \nالعنوان: ${personalInfo.address} \nرقم الهاتف: ${personalInfo.phone}`);
-
-    Document.getElementById("products").value = cart.join(", ")
-
-    Document.getElementById("checkout-form").submit
-    
-    // مسح السلة
-    clearCart();
     
     // مسح الحقول الشخصية
     document.getElementById("name").value = "";
@@ -159,7 +150,8 @@ function savePersonalInfo() {
     // التأكد من أن جميع الحقول قد تم ملؤها
     if (name && address && phone) {
         let personalInfo = { name, address, phone };
-        localStorage.setItem("personalInfo", JSON.stringify(personalInfo));    }
+        localStorage.setItem("personalInfo", JSON.stringify(personalInfo));
+    }
 }
 
 // استرجاع المعلومات الشخصية من localStorage
@@ -193,4 +185,5 @@ function toggleCart() {
     if (cartSection) {
         cartSection.style.display = (cartSection.style.display === "none" || cartSection.style.display === "") ? "block" : "none";
     }
+    window.location.href = "index.html";
 }
