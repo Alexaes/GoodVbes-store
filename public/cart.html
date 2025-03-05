@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>السلة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="cart.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <section id="cart">
+        <h2> محتويات السلة</h2>
+
+        <!-- نموذج المعلومات الشخصية -->
+       <form id="checkout-form" name="order"
+        method="POST" data-netlify="true">
+        <div id="personal-info-form">
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" name="name" required><br>
+            
+            <label for="address">العنوان:</label>
+            <input type="text" id="address" name="address" required><br>
+            
+            <label for="phone">رقم الهاتف:</label>
+            <input type="tel" id="phone" name="phone" required><br>
+        </div>
+
+        <!-- محتويات السلة -->
+        <div class="cart-content">
+            <p id="cart-empty" style="display: none;">السلة فارغة</p>
+            <ul id="cart-items"></ul>
+            <p id="cart-total">المجموع: <span id="total-price">0</span> درهم</p>
+            
+            <div class="cart-buttons">
+                <button id="checkout-button" onclick="checkout()" style="display: none;"> إتمام الشراء</button>
+                <button id="clear-cart" onclick="clearCart()" style="display: none;"> تفريغ السلة</button>
+                <button id="close-cart" onclick="closeCart()"> إغلاق السلة</button>
+            </div>
+        </div> 
+        </form>
+    </section>
+
+    <script>
+        // إغلاق السلة والعودة إلى الصفحة الرئيسية
+        function closeCart() {
+            window.location.href = "index.html"; // العودة إلى الصفحة الرئيسية عند إغلاق السلة
+        }
+
+        // تقديم البيانات الشخصية
+        function submitInfo() {
+            let name = document.getElementById('name').value;
+            let address = document.getElementById('address').value;
+            let phone = document.getElementById('phone').value;
+
+            // التحقق من صحة البيانات
+            if (name === "" || address === "" || phone === "") {
+                alert("يرجى ملء جميع الحقول.");
+                return;
+            }
+
+            // تخزين المعلومات الشخصية
+            localStorage.setItem("personalInfo", JSON.stringify({ name, address, phone }));
+
+            // إخفاء نموذج البيانات الشخصية بعد تأكيدها
+            document.getElementById("personal-info-form").style.display = "none";
+            document.getElementById("checkout-button").style.display = "block";  // إظهار زر إتمام الشراء
+            alert("تم حفظ البيانات بنجاح.");
+        }
+
+        // إتمام الشراء
+        function checkout() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let personalInfo = JSON.parse(localStorage.getItem("personalInfo"));
+
+            if (!personalInfo) {
+                alert("يرجى إدخال المعلومات الشخصية أولاً.");
+                return;
+            }
+
+            if (cart.length === 0) {
+                alert("السلة فارغة، أضف منتجات أولاً!");
+                return;
+            }
+
+            alert(`✅ تم إتمام طلبك بنجاح! \nالإسم: ${personalInfo.name} \nالعنوان: ${personalInfo.address} \nرقم الهاتف: ${personalInfo.phone}`);
+            clearCart();  // تفريغ السلة بعد إتمام الشراء
+        }
+
+        // تفريغ السلة بالكامل
+        function clearCart() {
+            localStorage.removeItem("cart");
+            updateCartUI();
+        }
+
+        // تحديث واجهة السلة
+        function updateCartUI() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartItemsContainer = document.getElementById("cart-items");
+            let totalPriceElement = document.getElementById("total-price");
+            let cartEmptyMessage = document.getElementById("cart-empty");
+
+            cartItemsContainer.innerHTML = "";
+            let totalPrice = 0;
+
+            if (cart.length === 0) {
+                cartEmptyMessage.style.display = "block";
+            } else {
+                cartEmptyMessage.style.display = "none";
+            }
+
+            cart.forEach(product => {
+                let listItem = document.createElement("li");
+                listItem.textContent = product;
+                cartItemsContainer.appendChild(listItem);
+                totalPrice += 25; // افتراض أن كل منتج قيمته 25 درهم (يمكنك تعديل ذلك حسب المنتج)
+            });
+
+            totalPriceElement.textContent = totalPrice;
+        }
+
+        // إضافة منتج إلى السلة
+        function addToCart(productName) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push(productName);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartUI();
+        }
+    </script>
+</body>
+</html>

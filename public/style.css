@@ -91,7 +91,7 @@ nav a {
 
 /* تحسين زر السلة */
 .add-to-cart {
-    background: green;
+    background: #333;
     color: white;
     padding: 10px;
     border: none;
@@ -114,57 +114,30 @@ nav a {
     margin-top: 20px;
 }
 
-#cart-tab.active {
-    display: block;
-}
-
 #cart-icon {
-    cursor: pointer;
-    font-size: 24px;
-    color: white;
-    margin-left: 20px;
-}
-
-#cart-items {
-    list-style: none;
-    padding: 0;
-}
-
-/* تنسيق بيانات الطلب */
-#order-details {
-    margin-top: 20px;
-    padding: 15px;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-#order-details input {
-    width: 90%;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    background-color: #58989cdf;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* تحسين زر إكمال الطلب */
-#checkout-btn {
-    display: none;
-    background: #007bff;
+#cart-item-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: rgb(0, 0, 0);
     color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 90%;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-#checkout-btn:hover {
-    background: #0056b3;
+    border-radius: 100%;
+    padding: 5px 10px;
+    font-size: 14px;
 }
 
 .remove-item {
@@ -196,7 +169,7 @@ nav a {
     padding: 10px 25px;
     width: 100%;
     max-width: 1px;
-    background-color: #302e2d;
+    background-color: #333;
     border-radius: 10px;
     text-decoration: none;
     color: white;
@@ -241,9 +214,9 @@ nav a {
         gap: 15px!important;
         max-width: 80%!important;
         margin: 0 auto!important;
-        border: 2px solid red!important;
+        border: 2px solid rgba(150, 130, 130, 0.548)!important;
     }
         .link {
-            border: 1px solid blue!important;
+            border: 1px solid rgba(150, 135, 135, 0.555)!important;
         }
     }
