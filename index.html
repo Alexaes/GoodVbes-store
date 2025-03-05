@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>GOOD VIBES</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+<body>
+
+    <!-- شريط العنوان -->
+    <header>
+        <h1>Good Vibes Store</h1>
+        <nav>
+            <a href="#">المنتجات</a>
+            <a href="#">اتصل بنا</a>
+            <i class="fas fa-shopping-cart" id="cart-icon" onclick="toggleCart()"></i>
+        </nav>
+    </header>
+
+    <div id="cart-tap" class="tab-content">
+        <section id="cart" style="display: none;">
+            <h2> محتويات السلة </h2>
+            <ul id="cart-items"></ul>
+        </section>
+    </div>
+
+    <!-- المنتجات -->
+    <section id="products">
+        <h2>منتجاتنا</h2>
+        <div class="product">
+            <img src="photos/photo9.png" alt="مبخرة بديع صفراء">
+            <h3>مبخرة بديع صفراء</h3>
+            <p>السعر: 29 درهم</p>
+            <button class="add-to-cart" onclick="addToCart(' مبخرة بديع صفراء ')">
+                <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+            </button>
+        </div>
+        <div class="product">
+                <img src="photos/photo10.png" alt=" مبخرة بديع زرقاء">
+                <h3>مبخرة بديع زرقاء</h3>
+                <p>السعر: 29 درهم</p>
+                <button class="add-to-cart" onclick="addToCart(' مبخرة بديع زرقاء ')">
+                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                </button>
+        </div>
+        <div class="product">
+                <img src="photos/photo5.png" alt=" مبخرة الوردة  ">
+                <h3>مبخرة الوردة</h3>
+                <p>السعر: 19 درهم</p>
+                <button class="add-to-cart" onclick="addToCart(' مبخرة الوردة ')">
+                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                </button>
+        </div>
+         <div class="product">
+                <img src="photos/photo11.png" alt=" مبخرة النخلة ">
+                <h3>مبخرة النخلة</h3>
+                <p>السعر: 19 درهم</p>
+                <button class="add-to-cart" onclick="addToCart(' مبخرة النخلة ')">
+                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                </button>
+        </div>
+        <div class="product">
+                <img src="photos/photo7.png" alt=" بلاطو مرايا ">
+                <h3>بلاطو مرايا</h3>
+                <p>السعر: 39 درهم</p>
+                <button class="add-to-cart" onclick="addToCart(' بلاطو مرايا ')">
+                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                </button>
+        </div>
+         <div class="product">
+                    <img src="photos/photo4.png" alt=" قرعة البخور ">
+                    <h3>قرعة البخور</h3>
+                    <p>السعر: 19 درهم</p>
+                    <button class="add-to-cart" onclick="addToCart(' قرعة البخور ')">
+                        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                    </button>
+        </div>
+        <div class="product">
+                    <img src="photos/photo6.png" alt=" ملقط البخور ">
+                    <h3>ملقط البخور</h3>
+                    <p>السعر: 8 درهم</p>
+                    <button class="add-to-cart" onclick="addToCart(' ملقط البخور ')">
+                        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                    </button>
+        </div>
+         <div class="product">
+                        <img src="photos/photo8.png" alt=" بخور ">
+                        <h3>بخور</h3>
+                        <p>السعر: 25 درهم</p>
+                        <button class="add-to-cart" onclick="addToCart(' بخور ')">
+                            <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                        </button>
+        </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <h2>packs</h2>
+        <div class="product">
+            <img src="photos/photo2.png" alt="باك الفخامة">
+            <h3>باك الفخامة</h3>
+            <p>السعر: 109 درهم</p>
+            <button class="add-to-cart" onclick="addToCart(' باك الفخامة ')">
+                <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+            </button>
+        </div>
+            <div class="product">
+                <img src="photos/photo3.png" alt="باك الأناقة">
+                <h3>باك الأناقة</h3>
+                <p>السعر: 99 درهم</p>
+                <button class="add-to-cart" onclick="addToCart(' باك الأناقة ')">
+                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                </button>
+        </div>
+    <section id="cart" style="display: none;"></section>
+    <ul id="cart-items"></ul>
+    <button id="checkout-btn" onclick="checkout()">إكمال الطلب</button>
+    </section>
+
+    <!-- بيانات الطلب -->
+    <div id="order-details">
+        <h3>معلومات الطلب</h3>
+        <input type="text" id="name" placeholder="الاسم الكامل" required>
+        <input type="text" id="address" placeholder="العنوان" required>
+        <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+        <button id="checkout-btn" onclick="checkout()">إكمال الطلب</button>
+    </div>
+    <style>
+        .link-container {
+            display: flex!important;
+            flex-direction: row!important;
+            flex-wrap: wrap!important;
+            justify-content: center!important;
+            gap: 15px!important;
+            width: 100%!important;
+            border: 2px solid red!important;
+        }
+    </style>
+
+<div class="centered-links">
+    <a class="link" href="https://www.instagram.com/Go0d__v1bes">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a class="link" href="https://wa.link/yeo7ti">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a class="link" href="https://www.facebook.com/share/14wVZXpY95/">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a class="link" href="http://tiktok.me/_go0d_v1bes/">
+      <i class="fab fa-tiktok"></i>
+    </a>
+</div>
+
+    <!-- حقوق الملكية -->
+    <footer class="footer">
+        Copyright By 2o7_v © 2025
+    </footer>
+
+    <script>
+        function toggleCart() {
+            var cart = document.getElementById('cart');
+            if (cart.style.display === 'none' || cart.style.display === '') {
+                cart.style.display = 'block';
+            } else {
+                cart.style.display = 'none';
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

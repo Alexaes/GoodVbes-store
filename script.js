@@ -1,0 +1,68 @@
+// تحديث زر إكمال الطلب
+function updateCheckoutButton() {
+    let checkoutBtn = document.getElementById("checkout-btn");
+    let cartItems = document.getElementById("cart-items");
+    
+    if (cartItems.children.length > 0) {
+        checkoutBtn.style.display = "block"; // إظهار الزر إذا كانت السلة غير فارغة
+    } else {
+        checkoutBtn.style.display = "none"; // إخفاء الزر إذا كانت السلة فارغة
+    }
+}
+
+// إضافة منتج إلى السلة
+function addToCart(productName) {
+    let cartItems = document.getElementById("cart-items");
+    let listItem = document.createElement("li");
+    listItem.textContent = productName;
+
+    // إضافة زر لإزالة المنتج من السلة
+    let removeBtn = document.createElement("button");
+    removeBtn.textContent = "إزالة";
+    removeBtn.classList.add("remove-item");
+    removeBtn.onclick = function() {
+        removeFromCart(listItem); // إزالة العنصر عند الضغط على زر إزالة
+    };
+    
+    listItem.appendChild(removeBtn);
+    cartItems.appendChild(listItem);
+    
+    updateCheckoutButton();
+}
+
+// إزالة منتج من السلة
+function removeFromCart(listItem) {
+    let cartItems = document.getElementById("cart-items");
+    cartItems.removeChild(listItem); // إزالة العنصر من السلة
+    
+    updateCheckoutButton(); // تحديث حالة زر إكمال الطلب
+}
+
+// إكمال الطلب
+function checkout() {
+    let name = document.getElementById("name").value;
+    let address = document.getElementById("address").value;
+    let phone = document.getElementById("phone").value;
+    
+    // التحقق من أن جميع الخانات تم ملؤها
+    if (name === "" || address === "" || phone === "") {
+        alert("يرجى ملء جميع الخانات قبل إكمال الطلب!");
+        return;
+    }
+
+    // إظهار رسالة تأكيد
+    alert("تم إرسال طلبك بنجاح!");
+    
+    // مسح البيانات
+    document.getElementById("cart-items").innerHTML = "";
+    document.getElementById("name").value = "";
+    document.getElementById("address").value = "";
+    document.getElementById("phone").value = "";
+    
+    updateCheckoutButton(); // تحديث حالة زر إكمال الطلب
+}
+
+function togglecart() {
+    const cartTable = document.getElementById("cart-table");
+    cartTable.classList.toggle("active");
+}
