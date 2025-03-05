@@ -27,7 +27,7 @@ function addToCart(productName) {
     listItem.appendChild(removeBtn);
     cartItems.appendChild(listItem);
     
-    updateCheckoutButton();
+    updateCheckoutButton(); // تحديث زر إكمال الطلب
 }
 
 // إزالة منتج من السلة
@@ -62,11 +62,13 @@ function checkout() {
     updateCheckoutButton(); // تحديث حالة زر إكمال الطلب
 }
 
+// تغيير عرض السلة
 function togglecart() {
     const cartTable = document.getElementById("cart-table");
     cartTable.classList.toggle("active");
 }
 
+// الكود للتفاعل مع الـ API (اختياري - إذا كنت تستخدم خدمة من السيرفر أو قاعدة بيانات)
 exports.handler = async function(event, context) {
     const { product_id, quantity } = JSON.parse(event.body); // استلام البيانات من العميل
 
