@@ -1,16 +1,95 @@
-/* cart.css */
-
-/* أساسي */
-body {
+/* تعيين box-sizing لكل العناصر */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* أساسي */
+  body {
     font-family: 'Roboto', sans-serif;
     background-color: #f5f5f5;
     color: #333;
     margin: 0;
     padding: 0;
-}
-
-/* تصميم السلة */
-#cart {
+  }
+  
+  /* تأثيرات الانتقال بين الصفحات */
+  .fade-in {
+    animation: fadeInPage 0.5s forwards;
+  }
+  
+  .fade-out {
+    animation: fadeOutPage 0.5s forwards;
+  }
+  
+  @keyframes fadeInPage {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOutPage {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  /* تنسيق الإشعارات */
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    opacity: 0;
+    z-index: 9999;
+    animation: slideIn 0.5s forwards, fadeOut 0.5s forwards 2.5s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+  }
+  
+  .notification.success {
+    background-color: #28a745;
+  }
+  
+  .notification.error {
+    background-color: #dc3545;
+  }
+  
+  /* تخصيص إشعار مسح السلة */
+  .clear-cart-notification {
+    background-color: #ffc107;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  /* تصميم السلة */
+  #cart {
     max-width: 800px;
     margin: 30px auto;
     padding: 20px;
@@ -18,46 +97,59 @@ body {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
-}
-
-/* العنوان */
-h2 {
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* العنوان */
+  h2 {
     text-align: center;
     font-size: 2em;
     color: #333;
     margin-bottom: 20px;
-}
-
-/* نموذج المعلومات الشخصية */
-#personal-info-form {
+  }
+  
+  /* نموذج المعلومات الشخصية */
+  #personal-info-form {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
-}
-
-#personal-info-form label {
+  }
+  
+  #personal-info-form label {
     font-size: 1.1em;
     color: #555;
-}
-
-#personal-info-form input {
+  }
+  
+  #personal-info-form input {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1em;
-    transition: border-color 0.3s;
-}
-
-#personal-info-form input:focus {
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  #personal-info-form input:focus {
     border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
     outline: none;
-}
-
-#submit-info {
+  }
+  
+  #submit-info {
     display: block;
     width: 100%;
     padding: 12px;
@@ -67,24 +159,25 @@ h2 {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#submit-info:hover {
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  #submit-info:hover {
     background-color: #0056b3;
-}
-
-/* السلة */
-.cart-content {
+    transform: scale(1.02);
+  }
+  
+  /* محتويات السلة */
+  .cart-content {
     margin-top: 30px;
-}
-
-.cart-content ul {
+  }
+  
+  .cart-content ul {
     list-style-type: none;
     padding: 0;
-}
-
-.cart-content li {
+  }
+  
+  .cart-content li {
     padding: 15px;
     background-color: #f9f9f9;
     margin-bottom: 10px;
@@ -93,86 +186,113 @@ h2 {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.cart-content li:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideUp 0.5s ease;
+  }
+  
+  .cart-content li:hover {
     transform: scale(1.03);
-}
-
-.cart-content li span {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cart-content li span {
     font-size: 1.2em;
     font-weight: bold;
-}
-
-.cart-content button.remove-item {
+  }
+  
+  /* أزرار تعديل المنتجات داخل السلة */
+  .cart-content button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: transform 0.3s, color 0.3s;
+  }
+  
+  .cart-content button:hover {
+    transform: scale(1.2);
+  }
+  
+  /* زر إزالة العنصر بالكامل */
+  .cart-content button.remove-item {
     background-color: #ff5733;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
-    cursor: pointer;
     transition: background-color 0.3s;
-}
-
-.cart-content button.remove-item:hover {
+  }
+  
+  .cart-content button.remove-item:hover {
     background-color: #e74c3c;
-}
-
-/* المجموع */
-#cart-total {
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* المجموع */
+  #cart-total {
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 20px;
     text-align: right;
     color: #333;
-}
-
-/* الأزرار */
-.cart-buttons {
+  }
+  
+  /* الأزرار الرئيسية */
+  .cart-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-}
-
-.cart-buttons button {
+  }
+  
+  .cart-buttons button {
     padding: 12px;
     font-size: 1.1em;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
     flex: 1;
     margin: 0 5px;
-}
-
-.cart-buttons button:hover {
-    background-color: #0385ca;
-}
-
-#checkout-button {
+  }
+  
+  .cart-buttons button:hover {
+    transform: translateY(-3px);
+  }
+  
+  #checkout-button {
     background-color: #28a745;
     color: white;
-}
-
-#checkout-button:hover {
+  }
+  
+  #checkout-button:hover {
     background-color: #218838;
-}
-
-#clear-cart {
+  }
+  
+  #clear-cart {
     background-color: #dc3545;
     color: white;
-}
-
-#clear-cart:hover {
+  }
+  
+  #clear-cart:hover {
     background-color: #c82333;
-}
-
-#close-cart {
+  }
+  
+  #close-cart {
     background-color: #6c757d;
     color: white;
-}
-
-#close-cart:hover {
+  }
+  
+  #close-cart:hover {
     background-color: #4f5b64;
-}
+  }

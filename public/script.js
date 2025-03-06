@@ -1,30 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-    updateCartUI();
+// script.js
 
-    // إضافة المنتجات إلى السلة عند النقر على زر "أضف إلى السلة"
-    document.querySelectorAll(".add-to-cart").forEach(button => {
-        button.addEventListener("click", function () {
-            let productName = this.parentElement.querySelector("h3").textContent.trim();
-            addToCart(productName);
-        });
-    });
-
-    // التحقق من الحقول وتخزين البيانات تلقائيًا عند كل تغيير
-    document.getElementById("name")?.addEventListener("input", savePersonalInfo);
-    document.getElementById("address")?.addEventListener("input", savePersonalInfo);
-    document.getElementById("phone")?.addEventListener("input", savePersonalInfo);
-
-    // حذف البيانات من localStorage عند مسح الحقل
-    document.getElementById("name")?.addEventListener("input", clearPersonalInfo);
-    document.getElementById("address")?.addEventListener("input", clearPersonalInfo);
-    document.getElementById("phone")?.addEventListener("input", clearPersonalInfo);
-
-    // تعبئة الحقول بالمعلومات الشخصية إذا كانت موجودة
-    fillPersonalInfo();
-});
-
-// قائمة الأسعار
-const productPrices = {
+// تعريف خريطة أسعار المنتجات
+const productCatalog = {
     "مبخرة بديع صفراء": 29,
     "مبخرة بديع زرقاء": 29,
     "مبخرة الوردة": 19,
@@ -35,162 +12,191 @@ const productPrices = {
     "بخور": 25,
     "باك الفخامة": 109,
     "باك الأناقة": 99
-};
-
-// إضافة منتج إلى السلة
-function addToCart(productName) {
-    if (!productPrices[productName]) {
-        console.error("❌ لم يتم العثور على السعر لهذا المنتج:", productName);
-        return;
-    }
-
+  };
+  
+  // إضافة منتج إلى السلة (تُستخدم في صفحة index)
+  function addToCart(productName) {
+    productName = productName.trim();
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart.push(productName);
     localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartUI();
-}
-
-// تحديث واجهة السلة
-function updateCartUI() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let cartItemsContainer = document.getElementById("cart-items");
-    let totalPriceElement = document.getElementById("cart-total");
-    let checkoutButton = document.getElementById("checkout-button");
-    let emptyMessage = document.getElementById("cart-empty");
-    let clearCartButton = document.getElementById("clear-cart");
-    let closeCartButton = document.getElementById("close-cart");
-    addEventListener("click", toggleCart);
-
-    if (!cartItemsContainer || !totalPriceElement) return;
-
-    cartItemsContainer.innerHTML = "";
-    let totalPrice = 0;
-
-    if (cart.length === 0) {
-        emptyMessage.style.display = "block";
-        checkoutButton.style.display = "none";
-        clearCartButton.style.display = "none";  // إخفاء زر تفريغ السلة عندما السلة فارغة
-    } else {
-        emptyMessage.style.display = "none";
-        checkoutButton.style.display = "block";
-        clearCartButton.style.display = "block";  // إظهار زر تفريغ السلة عندما السلة تحتوي على عناصر
-    }
-
-    cart.forEach((product, index) => {
-        if (!productPrices[product]) {
-            console.warn("⚠️ المنتج غير معروف في القائمة:", product);
-            return;
-        }
-
-        let listItem = document.createElement("li");
-        listItem.textContent = product + " - " + productPrices[product] + " درهم";
-        totalPrice += productPrices[product];
-
-        // زر إزالة المنتج
-        let removeBtn = document.createElement("button");
-        removeBtn.textContent = "❌";
-        removeBtn.classList.add("remove-item");
-        removeBtn.onclick = function () {
-            removeFromCart(index);
-        };
-
-        listItem.appendChild(removeBtn);
-        cartItemsContainer.appendChild(listItem);
-    });
-
-    totalPriceElement.textContent = "المجموع: " + totalPrice + " درهم";
-}
-
-// إزالة منتج معين من السلة
-function removeFromCart(index) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartUI();
-}
-
-// تفريغ السلة بالكامل
-function clearCart() {
-    localStorage.removeItem("cart");
-    updateCartUI();
-}
-
-// إتمام الشراء
-function checkout() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let personalInfo = getPersonalInfo();
-    
-    if (cart.length === 0) {
-        alert("السلة فارغة، أضف منتجات أولاً!");
-        return;
-    }
-
-    if (!personalInfo.name || !personalInfo.address || !personalInfo.phone) {
-        alert("الرجاء إدخال جميع المعلومات الشخصية.");
-        return;
-    }
-
-    alert(`✅ تم إتمام طلبك بنجاح! \nالإسم: ${personalInfo.name} \nالعنوان: ${personalInfo.address} \nرقم الهاتف: ${personalInfo.phone}`);
-    
-    // مسح الحقول الشخصية
-    document.getElementById("name").value = "";
-    document.getElementById("address").value = "";
-    document.getElementById("phone").value = "";
-
-    // مسح بيانات المستخدم من localStorage
-    localStorage.removeItem("personalInfo");
-}
-
-// حفظ المعلومات الشخصية في localStorage
-function savePersonalInfo() {
-    let name = document.getElementById("name").value;
-    let address = document.getElementById("address").value;
-    let phone = document.getElementById("phone").value;
-
-    // التأكد من أن جميع الحقول قد تم ملؤها
-    if (name && address && phone) {
-        let personalInfo = { name, address, phone };
-        localStorage.setItem("personalInfo", JSON.stringify(personalInfo));
-    }
-}
-
-// استرجاع المعلومات الشخصية من localStorage
-function getPersonalInfo() {
-    return JSON.parse(localStorage.getItem("personalInfo")) || {};
-}
-
-// تعبئة الحقول بالمعلومات الشخصية إذا كانت موجودة
-function fillPersonalInfo() {
-    let personalInfo = getPersonalInfo();
-
-    if (personalInfo.name) document.getElementById("name").value = personalInfo.name;
-    if (personalInfo.address) document.getElementById("address").value = personalInfo.address;
-    if (personalInfo.phone) document.getElementById("phone").value = personalInfo.phone;
-}
-
-// حذف البيانات من localStorage عند مسح الحقل
-function clearPersonalInfo(event) {
-    let fieldId = event.target.id;
-
-    if (event.target.value === "") {
-        let personalInfo = JSON.parse(localStorage.getItem("personalInfo")) || {};
-        delete personalInfo[fieldId]; // حذف الحقل الذي تم مسحه
-        localStorage.setItem("personalInfo", JSON.stringify(personalInfo));
-    }
-}
-
-// فتح/إغلاق السلة
-function toggleCart(event) {
-    event.stopPropagation();
-    let cartSection = document.getElementById("close-cart");
-    if (cartSection) {
-        cartSection.style.display = (cartSection.style.display === "none") 
-    }
-
+    updateCartCount();
+    showNotification("تمت الإضافة إلى السلة", "success");
+  }
   
-}
-
-document.getElementById("close-cart").addEventListener("click", function () {
-    window.location.href = "index.html";
-
-});
+  // تحديث عداد المنتجات على أيقونة السلة
+  function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartCountElem = document.getElementById("cart-item-count");
+    if (cartCountElem) {
+      cartCountElem.textContent = cart.length;
+    }
+  }
+  
+  // تعديل كمية منتج معين في السلة
+  function modifyCartItem(productName, delta) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (delta > 0) {
+      for (let i = 0; i < delta; i++) {
+        cart.push(productName);
+      }
+    } else if (delta < 0) {
+      for (let i = 0; i < Math.abs(delta); i++) {
+        let index = cart.indexOf(productName);
+        if (index > -1) {
+          cart.splice(index, 1);
+        }
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    displayCart();
+  }
+  
+  // إزالة منتج بالكامل من السلة عند النقر على العلامة
+  function removeProductFromCart(productName) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart = cart.filter(item => item.trim() !== productName.trim());
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    displayCart();
+    showNotification(`تم إزالة ${productName} من السلة`, "success");
+  }
+  
+  // عرض محتويات السلة مع حساب الكميات والمجموع وإضافة أزرار التعديل
+  function displayCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartItemsList = document.getElementById("cart-items");
+    const cartEmptyMessage = document.getElementById("cart-empty");
+    const totalPriceElem = document.getElementById("total-price");
+    const checkoutButton = document.getElementById("checkout-button");
+    const clearCartButton = document.getElementById("clear-cart");
+  
+    if (cartItemsList) {
+      cartItemsList.innerHTML = "";
+      let totalPrice = 0;
+      if (cart.length === 0) {
+        if (cartEmptyMessage) cartEmptyMessage.style.display = "block";
+        if (checkoutButton) checkoutButton.style.display = "none";
+        if (clearCartButton) clearCartButton.style.display = "none";
+      } else {
+        if (cartEmptyMessage) cartEmptyMessage.style.display = "none";
+        if (checkoutButton) checkoutButton.style.display = "inline-block";
+        if (clearCartButton) clearCartButton.style.display = "inline-block";
+  
+        let productCounts = {};
+        cart.forEach(item => {
+          item = item.trim();
+          productCounts[item] = (productCounts[item] || 0) + 1;
+        });
+  
+        for (let product in productCounts) {
+          const li = document.createElement("li");
+          const quantity = productCounts[product];
+          const price = productCatalog[product] || 0;
+          const itemTotal = price * quantity;
+          totalPrice += itemTotal;
+  
+          const textSpan = document.createElement("span");
+          textSpan.textContent = `${product} - ${price} × ${quantity} = ${itemTotal} درهم `;
+          li.appendChild(textSpan);
+  
+          const addBtn = document.createElement("button");
+          addBtn.textContent = "+";
+          addBtn.title = "إضافة وحدة";
+          addBtn.onclick = () => { modifyCartItem(product, 1); };
+          li.appendChild(addBtn);
+  
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "-";
+          removeBtn.title = "إزالة وحدة";
+          removeBtn.onclick = () => { modifyCartItem(product, -1); };
+          li.appendChild(removeBtn);
+  
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "×";
+          deleteBtn.title = "إزالة المنتج";
+          deleteBtn.style.marginLeft = "10px";
+          deleteBtn.onclick = () => { removeProductFromCart(product); };
+          li.appendChild(deleteBtn);
+  
+          cartItemsList.appendChild(li);
+        }
+      }
+      if (totalPriceElem) totalPriceElem.textContent = totalPrice;
+    }
+  }
+  
+  // إتمام عملية الشراء (محاكاة) مع تفريغ حقول البيانات
+  function checkout() {
+    const nameInput = document.getElementById("name");
+    const addressInput = document.getElementById("address");
+    const phoneInput = document.getElementById("phone");
+  
+    if (!nameInput || !addressInput || !phoneInput) {
+      showNotification("يرجى ملء البيانات الشخصية", "error");
+      return;
+    }
+  
+    const name = nameInput.value.trim();
+    const address = addressInput.value.trim();
+    const phone = phoneInput.value.trim();
+  
+    if (name === "" || address === "" || phone === "") {
+      showNotification("يرجى ملء البيانات الشخصية بشكل صحيح", "error");
+      return;
+    }
+  
+    // تنفيذ عملية الشراء
+    showNotification(`شكراً ${name}، تم إتمام الشراء بنجاح!`, "success");
+    clearCart();
+  
+    // تفريغ حقول البيانات بعد إتمام الطلب
+    nameInput.value = "";
+    addressInput.value = "";
+    phoneInput.value = "";
+  }
+  
+  // تفريغ السلة بالكامل مع إشعار عند المسح
+  function clearCart() {
+    localStorage.removeItem("cart");
+    updateCartCount();
+    displayCart();
+    showNotification("تم مسح السلة بنجاح", "clear-cart-notification");
+  }
+  
+  // إغلاق صفحة السلة والعودة للمتجر مع تأثير تلاشي
+  function closeCart() {
+    document.body.classList.add('fade-out');
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 500);
+  }
+  
+  // دالة عرض الإشعارات مع تأثيرات بسيطة
+  function showNotification(message, type) {
+    const notification = document.createElement("div");
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+  
+    setTimeout(() => {
+      notification.style.opacity = "1";
+    }, 100);
+  
+    setTimeout(() => {
+      notification.style.opacity = "0";
+      setTimeout(() => {
+        notification.remove();
+      }, 500);
+    }, 2000);
+  }
+  
+  // عند تحميل الصفحة، إضافة تأثير fade‑in وتحديث العداد وعرض السلة إن وُجدت
+  document.addEventListener("DOMContentLoaded", function() {
+    document.body.classList.add('fade-in');
+    updateCartCount();
+    if (document.getElementById("cart-items")) {
+      displayCart();
+    }
+  });
