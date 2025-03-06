@@ -180,10 +180,17 @@ function clearPersonalInfo(event) {
 }
 
 // فتح/إغلاق السلة
-function toggleCart() {
-    let cartSection = document.getElementById("cart");
+function toggleCart(event) {
+    event.stopPropagation();
+    let cartSection = document.getElementById("close-cart");
     if (cartSection) {
-        cartSection.style.display = (cartSection.style.display === "none" || cartSection.style.display === "") ? "block" : "none";
+        cartSection.style.display = (cartSection.style.display === "none") 
     }
-    window.location.href = "index.html";
+
+  
 }
+
+document.getElementById("close-cart").addEventListener("click", function () {
+    window.location.href = "index.html";
+
+});

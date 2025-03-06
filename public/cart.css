@@ -147,7 +147,7 @@ h2 {
 }
 
 .cart-buttons button:hover {
-    background-color: #0056b3;
+    background-color: #0385ca;
 }
 
 #checkout-button {
@@ -174,5 +174,5 @@ h2 {
 }
 
 #close-cart:hover {
-    background-color: #5a6268;
+    background-color: #4f5b64;
 }

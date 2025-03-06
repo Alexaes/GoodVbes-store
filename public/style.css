@@ -116,10 +116,10 @@ nav a {
 
 #cart-icon {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    bottom: 20px;
+    right: 20px;
     font-size: 30px;
-    background-color: #58989cdf;
+    background-color: #425152df;
     padding: 10px;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
