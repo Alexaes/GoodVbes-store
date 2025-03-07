@@ -163,7 +163,7 @@
   
   #cart-icon:hover {
     transform: scale(1.15);
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    background: linear-gradient(135deg, var(r), var(--primary-color));
   }
   
   #cart-item-count {
@@ -255,7 +255,7 @@
     .product {
       flex: 1 1 calc(1% - 40px);
       max-width: calc(1% - 40px);
-      width: calc(50% - 40px);
+      width: calc(1% - 40px);
     }
   }
   
@@ -265,9 +265,9 @@
       margin: 0 10px;
     }
     .product {
-        flex: 1 1 calc(50% - 40px);
-        max-width: calc(50% - 40px);
-        width: calc(50% - 40px);
+        flex: 1 1 calc(1% - 40px);
+        max-width: calc(1% - 40px);
+        width: calc(1% - 40px);
     }
   }
   
