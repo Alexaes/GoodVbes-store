@@ -252,7 +252,7 @@ section h2 {
 .notification {
     position: fixed;
     top: 20px;
-    right: -11%;
+    right: -13%;
     transform: translateX(-50%);
     background-color: #28a745; /* لون النجاح */
     color: white;
