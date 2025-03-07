@@ -13,7 +13,7 @@
     <h2> محتويات السلة</h2>
     
     <!-- نموذج المعلومات الشخصية مع ربط Formspree -->
-    <form action="https://formspree.io/f/manewyoq" method="POST">
+    <form action="https://formspree.io/f/manewyoq" method="POST" onsubmit="prepareOrder()">
       <div id="personal-info-form">
         <label for="name">الاسم:</label>
         <input type="text" id="name" name="name" required><br>
@@ -23,6 +23,8 @@
         
         <label for="phone">رقم الهاتف:</label>
         <input type="tel" id="phone" name="phone" required><br>
+
+        <input type="hidden" id="order" name="order">
       </div>
       
       <!-- محتويات السلة -->
@@ -40,5 +42,18 @@
       </div>
     </form>
   </section>
+
+  <script>
+    function prepareOrder() {
+      let cartItems = document.querySelectorAll("#cart-itemsli");
+      let orderDetails = [];
+      cartItems.forEach(item => {
+      orderDetails.push(item.textContent.trim());
+      });
+
+      document.getElementById("order-details").value = orderDetails.join(", ");
+    }
+    </script>
+
 </body>
 </html>
