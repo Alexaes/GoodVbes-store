@@ -45,13 +45,13 @@
 
   <script>
     function prepareOrder() {
-      let cartItems = document.querySelectorAll("#cart-itemsli");
+      let cartItems = document.querySelectorAll("#cart-items li");
       let orderDetails = [];
       cartItems.forEach(item => {
       orderDetails.push(item.textContent.trim());
       });
 
-      document.getElementById("order-details").value = orderDetails.join(", ");
+      document.getElementById("order").value = orderDetails.join(", ");
     }
     </script>
 
