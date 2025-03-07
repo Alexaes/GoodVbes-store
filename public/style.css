@@ -163,7 +163,7 @@ section h2 {
 
 #cart-icon:hover {
     transform: scale(1.15);
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    background: linear-gradient(135deg, var(), var(--primary-color));
 }
 
 #cart-item-count {
@@ -252,7 +252,7 @@ section h2 {
 .notification {
     position: fixed;
     top: 20px;
-    right: -13%;
+    right: -11%;
     transform: translateX(-50%);
     background-color: #28a745; /* لون النجاح */
     color: white;
@@ -345,6 +345,14 @@ section h2 {
     }
 }
 
+.notification {
+    top: 15px;
+    right: 15px;
+    font-size: 14px;
+    padding: 10px 20px;
+    transform: none;
+}
+
 @media (max-width: 480px) {
     header h1 {
         font-size: 2rem;
@@ -352,4 +360,12 @@ section h2 {
     nav a {
         font-size: 0.9rem;
     }
+}
+
+.notification {
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+    padding: 8px 15px;
+    transform: none;
 }
