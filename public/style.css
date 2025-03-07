@@ -10,23 +10,23 @@
     --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     --border-radius: 5px;
     --font-family: 'Roboto', sans-serif;
-  }
-  
-  /* إعادة تعيين بعض الخصائص الأساسية */
-  * {
+}
+
+/* إعادة تعيين بعض الخصائص الأساسية */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     font-family: var(--font-family);
     background: #fafafa;
     color: var(--font-color);
-  }
-  
-  /* تنسيق شريط العنوان */
-  header {
+}
+
+/* تنسيق شريط العنوان */
+header {
     background: var(--header-bg);
     padding: 15px 0;
     text-align: center;
@@ -34,43 +34,43 @@
     position: sticky;
     top: 0;
     z-index: 100;
-  }
-  
-  header h1 {
+}
+
+header h1 {
     margin-bottom: 20px;
     font-size: 3rem; /* تكبير العنوان ليصبح بارزًا */
-  }
-  
-  /* روابط القائمة في العنوان */
-  nav a {
+}
+
+/* روابط القائمة في العنوان */
+nav a {
     color: #fff;
     margin: 0 15px;
     text-decoration: none;
     font-weight: 700;
     transition: color var(--transition-speed);
-  }
-  
-  nav a:hover {
+}
+
+nav a:hover {
     color: var(--secondary-color);
-  }
-  
-  /* عناوين الأقسام */
-  section h2 {
+}
+
+/* عناوين الأقسام */
+section h2 {
     text-align: center;
     margin-top: 20px;    /* إزاحة بسيطة من الأعلى */
     margin-bottom: 30px;
     padding-bottom: 10px;
     font-size: 1.8rem;
-  }
-  
-  /* جعل عناوين المنتجات والباكس تظهر في صف منفصل */
-  #products > h2,
-  #packs > h2 {
+}
+
+/* جعل عناوين المنتجات والباكس تظهر في صف منفصل */
+#products > h2,
+#packs > h2 {
     flex-basis: 100%;
-  }
-  
-  /* تنسيق الحاوية للمنتجات والباكس بحيث تكون محدودة العرض */
-  #products, #packs {
+}
+
+/* تنسيق الحاوية للمنتجات والباكس بحيث تكون محدودة العرض */
+#products, #packs {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -78,10 +78,10 @@
     gap: 1px;
     margin: 20px auto;
     max-width: 1200px;
-  }
-  
-  /* تنسيق المنتجات */
-  .product { 
+}
+
+/* تنسيق المنتجات */
+.product { 
     flex: 1 1 calc(50% - 40px);
     max-width: calc(50% - 40px);
     background: #fff;
@@ -93,15 +93,15 @@
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
     width: calc(50% - 40px);
     min-width: 250px;
-  }
-  
-  .product:hover {
+}
+
+.product:hover {
     transform: translateY(-5px);
     box-shadow: var(--box-shadow);
-  }
-  
-  /* تحسين عرض الصور بإضافة حواف دائرية وظل خفيف */
-  .product img {
+}
+
+/* تحسين عرض الصور بإضافة حواف دائرية وظل خفيف */
+.product img {
     width: 100px;
     height: auto;
     display: block;
@@ -110,25 +110,25 @@
     transition: transform var(--transition-speed);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-  
-  .product img:hover {
+}
+
+.product img:hover {
     transform: scale(1.1);
-  }
-  
-  .product h3 {
+}
+
+.product h3 {
     margin: 10px;
     font-size: 20px;
-  }
-  
-  .price {
+}
+
+.price {
     font-weight: 700;
     margin-bottom: 15px;
     color: var(--secondary-color);
-  }
-  
-  /* زر إضافة إلى السلة */
-  .add-to-cart {
+}
+
+/* زر إضافة إلى السلة */
+.add-to-cart {
     background: var(--primary-color);
     color: #fff;
     border: none;
@@ -137,15 +137,15 @@
     cursor: pointer;
     font-size: 1rem;
     transition: background var(--transition-speed), transform var(--transition-speed);
-  }
-  
-  .add-to-cart:hover {
+}
+
+.add-to-cart:hover {
     background: var(--secondary-color);
     transform: scale(1.1);
-  }
-  
-  /* تجميل أيقونة السلة */
-  #cart-icon {
+}
+
+/* تجميل أيقونة السلة */
+#cart-icon {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -159,14 +159,14 @@
     justify-content: center;
     align-items: center;
     transition: transform var(--transition-speed), background var(--transition-speed);
-  }
-  
-  #cart-icon:hover {
+}
+
+#cart-icon:hover {
     transform: scale(1.15);
     background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-  }
-  
-  #cart-item-count {
+}
+
+#cart-item-count {
     position: absolute;
     top: -5px;
     right: -5px;
@@ -175,17 +175,17 @@
     border-radius: 50%;
     padding: 5px 8px;
     font-size: 0.8rem;
-  }
-  
-  /* روابط التواصل الاجتماعي */
-  #links .centered-links {
+}
+
+/* روابط التواصل الاجتماعي */
+#links .centered-links {
     display: flex;
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
-  }
-  
-  #links .link {
+}
+
+#links .link {
     background: var(--primary-color);
     color: #fff;
     padding: 10px 20px;
@@ -198,31 +198,31 @@
     transition: background var(--transition-speed), transform var(--transition-speed);
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     border: 1.5px solid #e1d3cb;
-  }
-  
-  #links .link:hover {
+}
+
+#links .link:hover {
     background: #6d5a5497;
     transform: scale(1.05);
-  }
-  
-  #links .link i {
+}
+
+#links .link i {
     font-size: 1.5rem;
-  }
-  
-  /* قسم اختيار اللغة */
-  #language-selector {
+}
+
+/* قسم اختيار اللغة */
+#language-selector {
     background: var(--bg-color);
     padding: 20px;
     text-align: center;
     margin-top: 30px;
-  }
-  
-  #language-selector .centered-links {
+}
+
+#language-selector .centered-links {
     display: inline-flex;
     gap: 10px;
-  }
-  
-  #language-selector .centered-links a {
+}
+
+#language-selector .centered-links a {
     text-decoration: none;
     color: var(--font-color);
     background: var(--light-color);
@@ -230,52 +230,126 @@
     border-radius: var(--border-radius);
     font-weight: bold;
     transition: background var(--transition-speed), transform var(--transition-speed);
-  }
-  
-  #language-selector .centered-links a:hover {
+}
+
+#language-selector .centered-links a:hover {
     background: var(--secondary-color);
     color: #fff;
     transform: translateY(-2px);
-  }
-  
-  /* حقوق الملكية */
-  .footer {
+}
+
+/* حقوق الملكية */
+.footer {
     text-align: center;
     padding: 15px;
     background: var(--primary-color);
     color: #fff;
     font-size: 0.9rem;
     margin-top: 30px;
-  }
-  
-  /* التصميم المتجاوب */
-  
-  /* على الحاسوب: عمودين للمنتجات */
-  @media (min-width: 769px) {
-    .product {
-      flex: 1 1 calc(50% - 40px);
-      max-width: calc(50% - 40px);
-      width: calc(50% - 40px);
+}
+
+/* تصميم الإشعار (تمت الإضافة إلى السلة) */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: -11%;
+    transform: translateX(-50%);
+    background-color: #28a745; /* لون النجاح */
+    color: white;
+    padding: 15px 25px;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+    width: 100%;
+}
+
+.notification.success {
+    background-color: #28a745; /* لون أخضر للنجاح */
+}
+
+.notification.error {
+    background-color: #dc3545; /* لون أحمر للأخطاء */
+}
+
+.notification.info {
+    background-color: #17a2b8; /* لون أزرق للمعلومات */
+}
+
+.notification.warning {
+    background-color: #ffc107; /* لون أصفر للتحذيرات */
+}
+
+/* إضافة تأثير التلاشي */
+.notification.show {
+    opacity: 1;
+    transform: translateX(0) translateY(-10px);
+}
+
+.notification.hide {
+    opacity: 0;
+    transform: translateX(0) translateY(10px);
+}
+
+/* إضافة التأثيرات عندما يظهر الإشعار */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
     }
-  }
-  
-  /* على الهاتف والأجهزة الصغيرة: خط واحد للمنتجات */
-  @media (max-width: 768px) {
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* التأثير عند إزالة الإشعار */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+/* التصميم المتجاوب */
+
+/* على الحاسوب: عمودين للمنتجات */
+@media (min-width: 769px) {
+    .product {
+        flex: 1 1 calc(50% - 40px);
+        max-width: calc(50% - 40px);
+        width: calc(50% - 40px);
+    }
+}
+
+/* على الهاتف والأجهزة الصغيرة: خط واحد للمنتجات */
+@media (max-width: 768px) {
     nav a {
-      margin: 0 10px;
+        margin: 0 10px;
     }
     .product {
         flex: 1 1 calc(50% - 40px);
         max-width: calc(50% - 40px);
         width: calc(50% - 40px);
     }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
     header h1 {
-      font-size: 2rem;
+        font-size: 2rem;
     }
     nav a {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
-  }
+}

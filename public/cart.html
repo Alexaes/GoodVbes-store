@@ -4,81 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>السلة</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="cart.css">
-  <script src="script.js" defer></script>
 </head>
 <body>
   <section id="cart">
-    <h2> محتويات السلة</h2>
-    
-    <!-- نموذج المعلومات الشخصية مع ربط Formspree -->
-    <form action="https://formspree.io/f/manewyoq" method="POST" onsubmit="return prepareOrder(event)">
+    <h2>محتويات السلة</h2>
+
+    <!-- نموذج المعلومات الشخصية -->
+    <form id="order-form">
       <div id="personal-info-form">
         <label for="name">الاسم:</label>
         <input type="text" id="name" name="name" required><br>
-        
+
         <label for="address">العنوان:</label>
         <input type="text" id="address" name="address" required><br>
-        
+
         <label for="phone">رقم الهاتف:</label>
         <input type="tel" id="phone" name="phone" required><br>
 
         <input type="hidden" id="order" name="order">
       </div>
-      
+
       <!-- محتويات السلة -->
       <div class="cart-content">
         <p id="cart-empty" style="display: none;">السلة فارغة</p>
         <ul id="cart-items"></ul>
         <p id="cart-total">المجموع: <span id="total-price">0</span> درهم</p>
-        
+
         <div class="cart-buttons">
-          <button id="checkout-button" type="submit"> إتمام الشراء</button>
-          <button id="clear-cart" onclick="clearCart()" type="button"> تفريغ السلة</button>
-          <button id="close-cart" onclick="closeCart()" type="button"> إغلاق السلة</button>
+          <button id="checkout-button" type="submit">إتمام الشراء</button>
+          <button id="clear-cart" type="button" onclick="clearCart()">تفريغ السلة</button>
+          <button id="close-cart" type="button" onclick="closeCart()">إغلاق السلة</button>
         </div>
       </div>
     </form>
   </section>
 
+  <script src="script.js"></script>
   <script>
-function prepareOrder(event) {
-  event.preventDefault(); // منع الإرسال التلقائي للنموذج
+    document.getElementById("order-form").addEventListener("submit", function (event) {
+        event.preventDefault();
 
-  let name = document.getElementById("name").value;
-  let address = document.getElementById("address").value;
-  let phone = document.getElementById("phone").value;
-  let cartItems = document.querySelectorAll("#cart-items li");
+        let name = document.getElementById("name").value.trim();
+        let address = document.getElementById("address").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-  if (!name || !address || !phone || cartItems.length === 0) {
-      alert("يرجى ملء جميع الحقول وإضافة منتجات إلى السلة.");
-      return false; // إيقاف الإرسال
-  }
+        if (!name || !address || !phone || cartItems.length === 0) {
+            alert("يرجى ملء جميع الحقول وإضافة منتجات إلى السلة.");
+            return;
+        }
 
-  let orderDetails = [];
-  cartItems.forEach(item => {
-      orderDetails.push(item.textContent.trim());
-  });
+        let orderText = `👤 الاسم: ${name}\n📍 العنوان: ${address}\n📞 الهاتف: ${phone}\n🛒 المنتجات:\n- ${cartItems.join("\n- ")}\n💰 المجموع: ${document.getElementById("total-price").textContent} درهم`;
 
-  let orderText = `👤 الاسم: ${name}
-📍 العنوان: ${address}
-📞 الهاتف: ${phone}
-🛒 المنتجات:\n- ${orderDetails.join("\n- ")}
-💰 المجموع: ${document.getElementById("total-price").textContent} درهم`;
-
-  document.getElementById("order").value = orderText;
-
-  // إخفاء نموذج المعلومات الشخصية بعد الإرسال
-  document.getElementById("personal-info-form").style.display = 'none';
-
-  // إرسال الطلب إلى Formspree
-  event.target.submit(); 
-
-  return true; // السماح بالإرسال
-
-}
+        fetch("https://formspree.io/f/manewyoq", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, address, phone, order: orderText })
+        })
+        .then(response => {
+            if (response.ok) {
+                localStorage.removeItem("cart");
+                window.location.href = "complete-order.html";
+            } else {
+                alert("حدث خطأ أثناء إرسال الطلب. حاول مرة أخرى.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("تعذر إرسال الطلب. تحقق من اتصالك بالإنترنت.");
+        });
+    });
   </script>
-
 </body>
 </html>
