@@ -253,21 +253,18 @@
   /* على الحاسوب: عمودين للمنتجات */
   @media (min-width: 769px) {
     .product {
-      flex: 1 1 calc(1% - 40px);
-      max-width: calc(1% - 40px);
-      width: calc(1% - 40px);
+      flex: 1 1 calc(1% - 1px);
+      max-width: calc(1% - 1px);
+      width: calc(1% - 1px);
     }
   }
   
   /* على الهاتف والأجهزة الصغيرة: خط واحد للمنتجات */
   @media (max-width: 768px) {
-    nav a {
-      margin: 0 10px;
-    }
     .product {
-        flex: 1 1 calc(1% - 40px);
-        max-width: calc(1% - 40px);
-        width: calc(1% - 40px);
+        flex: 1 1 calc(1% - 1px);
+        max-width: calc(1% - 1px);
+        width: calc(1% - 1px);
     }
   }
   
