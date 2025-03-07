@@ -13,7 +13,7 @@
     <h2> محتويات السلة</h2>
     
     <!-- نموذج المعلومات الشخصية مع ربط Formspree -->
-    <form action="https://formspree.io/f/manewyoq" method="POST" onsubmit="prepareOrder()">
+    <form action="https://formspree.io/f/manewyoq" method="POST" onsubmit="return prepareOrder(event)">
       <div id="personal-info-form">
         <label for="name">الاسم:</label>
         <input type="text" id="name" name="name" required><br>
@@ -34,9 +34,8 @@
         <p id="cart-total">المجموع: <span id="total-price">0</span> درهم</p>
         
         <div class="cart-buttons">
-          <!-- يمكنك استخدام زر "إتمام الشراء" كزر إرسال إذا كان من المطلوب -->
-          <button id="checkout-button" type="submit" style="display: none;"> إتمام الشراء</button>
-          <button id="clear-cart" onclick="clearCart()" type="button" style="display: none;"> تفريغ السلة</button>
+          <button id="checkout-button" type="submit"> إتمام الشراء</button>
+          <button id="clear-cart" onclick="clearCart()" type="button"> تفريغ السلة</button>
           <button id="close-cart" onclick="closeCart()" type="button"> إغلاق السلة</button>
         </div>
       </div>
@@ -44,16 +43,42 @@
   </section>
 
   <script>
-    function prepareOrder() {
-      let cartItems = document.querySelectorAll("#cart-items li");
-      let orderDetails = [];
-      cartItems.forEach(item => {
-      orderDetails.push(item.textContent.trim());
-      });
+function prepareOrder(event) {
+  event.preventDefault(); // منع الإرسال التلقائي للنموذج
 
-      document.getElementById("order").value = orderDetails.join(", ");
-    }
-    </script>
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+  let phone = document.getElementById("phone").value;
+  let cartItems = document.querySelectorAll("#cart-items li");
+
+  if (!name || !address || !phone || cartItems.length === 0) {
+      alert("يرجى ملء جميع الحقول وإضافة منتجات إلى السلة.");
+      return false; // إيقاف الإرسال
+  }
+
+  let orderDetails = [];
+  cartItems.forEach(item => {
+      orderDetails.push(item.textContent.trim());
+  });
+
+  let orderText = `👤 الاسم: ${name}
+📍 العنوان: ${address}
+📞 الهاتف: ${phone}
+🛒 المنتجات:\n- ${orderDetails.join("\n- ")}
+💰 المجموع: ${document.getElementById("total-price").textContent} درهم`;
+
+  document.getElementById("order").value = orderText;
+
+  // إخفاء نموذج المعلومات الشخصية بعد الإرسال
+  document.getElementById("personal-info-form").style.display = 'none';
+
+  // إرسال الطلب إلى Formspree
+  event.target.submit(); 
+
+  return true; // السماح بالإرسال
+
+}
+  </script>
 
 </body>
 </html>
