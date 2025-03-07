@@ -5,159 +5,166 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>GOOD VIBES</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- استدعاء خط جوجل لتحسين الطباعة -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-    <!-- شريط العنوان -->
-    <header>
-        <h1>Good Vibes Store</h1>
-        <nav>
-            <a href="#products">منتجات</a>
-            <a href="#packs">حزم</a>
-            <a href="#links">اتصل بنا</a>
-            <a href="cart.html" id="cart-icon" class="fas fa-shopping-cart"><asp:Label ID="cart-item-count" runat="server" CssClass="badge badge-warning" ForeColor="white"/></a>
-        </nav>
-    </header>
+  <!-- شريط العنوان -->
+  <header>
+    <h1>Good Vibes Store</h1>
+    <nav>
+      <a href="#products">منتجات</a>
+      <a href="#packs">حزم</a>
+      <a href="#links">اتصل بنا</a>
+      <a href="cart.html" id="cart-icon" class="fas fa-shopping-cart">
+        <span id="cart-item-count">0</span>
+      </a>
+    </nav>
+  </header>
 
-    <!-- المنتجات -->
-    <section id="products">
-        <h2>منتجات</h2>
-        <div class="product">
-            <img src="photos/photo9.png" alt="مبخرة بديع صفراء">
-            <h3>مبخرة بديع صفراء</h3>
-            <p>السعر: 29 درهم</p>
-            <button class="add-to-cart" onclick="addToCart(' مبخرة بديع صفراء ')">
-                <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-            </button>
-        </div>
-        <div class="product">
-                <img src="photos/photo10.png" alt=" مبخرة بديع زرقاء">
-                <h3>مبخرة بديع زرقاء</h3>
-                <p>السعر: 29 درهم</p>
-                <button class="add-to-cart" onclick="addToCart(' مبخرة بديع زرقاء ')">
-                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-                </button>
-        </div>
-        <div class="product">
-                <img src="photos/photo5.png" alt=" مبخرة الوردة  ">
-                <h3>مبخرة الوردة</h3>
-                <p>السعر: 19 درهم</p>
-                <button class="add-to-cart" onclick="addToCart(' مبخرة الوردة ')">
-                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-                </button>
-        </div>
-         <div class="product">
-                <img src="photos/photo11.png" alt=" مبخرة النخلة ">
-                <h3>مبخرة النخلة</h3>
-                <p>السعر: 19 درهم</p>
-                <button class="add-to-cart" onclick="addToCart(' مبخرة النخلة ')">
-                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-                </button>
-        </div>
-        <div class="product">
-                <img src="photos/photo7.png" alt=" بلاطو مرايا ">
-                <h3>بلاطو مرايا</h3>
-                <p>السعر: 39 درهم</p>
-                <button class="add-to-cart" onclick="addToCart(' بلاطو مرايا ')">
-                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-                </button>
-        </div>
-         <div class="product">
-                    <img src="photos/photo4.png" alt=" قرعة البخور ">
-                    <h3>قرعة البخور</h3>
-                    <p>السعر: 19 درهم</p>
-                    <button class="add-to-cart" onclick="addToCart(' قرعة البخور ')">
-                        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-                    </button>
-        </div>
-        <div class="product">
-                    <img src="photos/photo6.png" alt=" ملقط البخور ">
-                    <h3>ملقط البخور</h3>
-                    <p>السعر: 8 درهم</p>
-                    <button class="add-to-cart" onclick="addToCart(' ملقط البخور ')">
-                        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-                    </button>
-        </div>
-         <div class="product">
-                        <img src="photos/photo8.png" alt=" بخور ">
-                        <h3>بخور</h3>
-                        <p>السعر: 25 درهم</p>
-                        <button class="add-to-cart" onclick="addToCart(' بخور ')">
-                            <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-                        </button>
-        </div>
-    </section>
-
-    <section id="packs">
-        <h2>حزم</h2>
-        <div class="product">
-            <img src="../photos/photo11.png" alt="باك الفخامة">
-            <h3>باك الفخامة</h3>
-            <p>السعر: 109 درهم</p>
-            <button class="add-to-cart" onclick="addToCart(' باك الفخامة ')">
-                <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-            </button>
-        </div>
-            <div class="product">
-                <img src="../photos/photo3.png" alt="باك الأناقة">
-                <h3>باك الأناقة</h3>
-                <p>السعر: 99 درهم</p>
-                <button class="add-to-cart" onclick="addToCart(' باك الأناقة ')">
-                    <i class="fas fa-shopping-cart"></i> أضف إلى السلة
-                </button>
-        </div>
-    <div class="link-container"></div>
-    </section>
-    <section id="links">
-        <h2>اتصل بنا</h2>
-<div class="centered-links">
-    <a class="link" href="https://www.instagram.com/Go0d__v1bes">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a class="link" href="https://wa.link/yeo7ti">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a class="link" href="https://www.facebook.com/share/14wVZXpY95/">
-      <i class="fab fa-facebook"></i>
-    </a>
-    <a class="link" href="http://tiktok.me/_go0d_v1bes/">
-      <i class="fab fa-tiktok"></i>
-    </a>
-</div>
-    </section>
-
-    <div id="language-selector">
-        <a href="languages/english.html">English</a>
-        <a href="languages/arabic.html">عربي</a>
-        <a href="languages/france.html">Français</a>
-        <a href="languages/spanish.html">Español</a>
+  <!-- المنتجات -->
+  <section id="products">
+    <h2>منتجات</h2>
+    <div class="product">
+      <img src="photos/photo9.png" alt="مبخرة بديع صفراء">
+      <h3>مبخرة بديع صفراء</h3>
+      <p class="price">السعر: 29 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('مبخرة بديع صفراء')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
     </div>
+    <div class="product">
+      <img src="photos/photo10.png" alt="مبخرة بديع زرقاء">
+      <h3>مبخرة بديع زرقاء</h3>
+      <p class="price">السعر: 29 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('مبخرة بديع زرقاء')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+    <div class="product">
+      <img src="photos/photo5.png" alt="مبخرة الوردة">
+      <h3>مبخرة الوردة</h3>
+      <p class="price">السعر: 19 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('مبخرة الوردة')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+    <div class="product">
+      <img src="photos/photo11.png" alt="مبخرة النخلة">
+      <h3>مبخرة النخلة</h3>
+      <p class="price">السعر: 19 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('مبخرة النخلة')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+    <div class="product">
+      <img src="photos/photo7.png" alt="بلاطو مرايا">
+      <h3>بلاطو مرايا</h3>
+      <p class="price">السعر: 39 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('بلاطو مرايا')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+    <div class="product">
+      <img src="photos/photo4.png" alt="قرعة البخور">
+      <h3>قرعة البخور</h3>
+      <p class="price">السعر: 19 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('قرعة البخور')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+    <div class="product">
+      <img src="photos/photo6.png" alt="ملقط البخور">
+      <h3>ملقط البخور</h3>
+      <p class="price">السعر: 8 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('ملقط البخور')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+    <div class="product">
+      <img src="photos/photo8.png" alt="بخور">
+      <h3>بخور</h3>
+      <p class="price">السعر: 25 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('بخور')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+  </section>
 
-    <!-- حقوق الملكية -->
-    <footer class="footer">
-        Copyright By 2o7_v © 2025
-    </footer>
+  <!-- الباك -->
+  <section id="packs">
+    <h2>حزم</h2>
+    <div class="product">
+      <img src="photos/photo2.png" alt="باك الفخامة">
+      <h3>باك الفخامة</h3>
+      <p class="price">السعر: 109 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('باك الفخامة')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+    <div class="product">
+      <img src="photos/photo3.png" alt="باك الأناقة">
+      <h3>باك الأناقة</h3>
+      <p class="price">السعر: 99 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('باك الأناقة')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+  </section>
 
-    <script>
-        function addToCart(productName) {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            cart.push(productName);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartCount();
-        }
+  <!-- روابط التواصل -->
+  <section id="links">
+    <h2>اتصل بنا</h2>
+    <div class="centered-links">
+      <a class="link" href="https://www.instagram.com/Go0d__v1bes">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a class="link" href="https://wa.link/yeo7ti">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a class="link" href="https://www.facebook.com/share/14wVZXpY95/">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a class="link" href="http://tiktok.me/_go0d_v1bes/">
+        <i class="fab fa-tiktok"></i>
+      </a>
+    </div>
+  </section>
 
-        // تحديث عدد العناصر في السلة
-        function updateCartCount() {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            document.getElementById('cart-item-count').textContent = cart.length;
-        }
+  <!-- اختيار اللغة -->
+  <section id="language-selector">
+    <div class="centered-links">
+      <a href="english.html">English</a>
+      <a href="arabic.html">العربية</a>
+      <a href="france.html">Français</a>
+      <a href="spanish.html">Español</a>
+    </div>
+  </section>
 
-        // استدعاء التحديث عند تحميل الصفحة
-        document.addEventListener("DOMContentLoaded", function() {
-            updateCartCount();
-        });
-    </script>
-    <script src="script.js"></script>
+  <!-- حقوق الملكية -->
+  <footer class="footer">
+    Copyright By 2o7_v © 2025
+  </footer>
+
+  <script>
+    function addToCart(productName) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(productName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById('cart-item-count').textContent = cart.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCartCount();
+    });
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>

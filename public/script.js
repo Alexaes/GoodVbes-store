@@ -98,7 +98,7 @@ const productCatalog = {
           totalPrice += itemTotal;
   
           const textSpan = document.createElement("span");
-          textSpan.textContent = `${product} - ${price} × ${quantity} = ${itemTotal} درهم `;
+          textSpan.textContent = `${product} - ${price} × ${quantity} ${itemTotal} درهم`;
           li.appendChild(textSpan);
   
           const addBtn = document.createElement("button");

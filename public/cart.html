@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>السلة</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="cart.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>السلة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="cart.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <section id="cart">
-        <h2> محتويات السلة</h2>
-
-        <!-- نموذج المعلومات الشخصية -->
-        <div id="personal-info-form">
-            <label for="name">الاسم:</label>
-            <input type="text" id="name" name="name" required><br>
-            
-            <label for="address">العنوان:</label>
-            <input type="text" id="address" name="address" required><br>
-            
-            <label for="phone">رقم الهاتف:</label>
-            <input type="tel" id="phone" name="phone" required><br>
+  <section id="cart">
+    <h2> محتويات السلة</h2>
+    
+    <!-- نموذج المعلومات الشخصية مع ربط Formspree -->
+    <form action="https://formspree.io/f/manewyoq" method="POST">
+      <div id="personal-info-form">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required><br>
+        
+        <label for="address">العنوان:</label>
+        <input type="text" id="address" name="address" required><br>
+        
+        <label for="phone">رقم الهاتف:</label>
+        <input type="tel" id="phone" name="phone" required><br>
+      </div>
+      
+      <!-- محتويات السلة -->
+      <div class="cart-content">
+        <p id="cart-empty" style="display: none;">السلة فارغة</p>
+        <ul id="cart-items"></ul>
+        <p id="cart-total">المجموع: <span id="total-price">0</span> درهم</p>
+        
+        <div class="cart-buttons">
+          <!-- يمكنك استخدام زر "إتمام الشراء" كزر إرسال إذا كان من المطلوب -->
+          <button id="checkout-button" type="submit" style="display: none;"> إتمام الشراء</button>
+          <button id="clear-cart" onclick="clearCart()" type="button" style="display: none;"> تفريغ السلة</button>
+          <button id="close-cart" onclick="closeCart()" type="button"> إغلاق السلة</button>
         </div>
-
-        <!-- محتويات السلة -->
-        <div class="cart-content">
-            <p id="cart-empty" style="display: none;">السلة فارغة</p>
-            <ul id="cart-items"></ul>
-            <p id="cart-total">المجموع: <span id="total-price">0</span> درهم</p>
-            
-            <div class="cart-buttons">
-                <button id="checkout-button" onclick="checkout()" style="display: none;"> إتمام الشراء</button>
-                <button id="clear-cart" onclick="clearCart()" style="display: none;"> تفريغ السلة</button>
-                <button id="close-cart" onclick="closeCart()"> إغلاق السلة</button>
-            </div>
-        </div> 
-        </form>
-    </section>
+      </div>
+    </form>
+  </section>
 </body>
 </html>
