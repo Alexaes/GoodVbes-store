@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>السلة</title>
-  <link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="../cart.css">
 </head>
 <body>
   <section id="cart">
@@ -40,13 +40,13 @@
     </form>
   </section>
 
-  <script src="script.js"></script>
+  <script src="../script.js"></script>
   <script>
 
 function closeCart() {
     document.body.classList.add('fade-out');
     setTimeout(() => {
-      window.location.href = "index.html";
+      window.location.href = "../languages/arabic.html";
     }, 500);
   }
 
@@ -63,8 +63,8 @@ function closeCart() {
             return;
         }
 
-        let orderText = `👤 الاسم: ${name}\n📍 العنوان: ${address}\n📞 الهاتف: ${phone}\n🛒 المنتجات:\n- ${cartItems.join("\n- ")}\n💰 المجموع: ${document.getElementById("total-price").textContent} درهم`;
-
+        let orderText = `${cartItems.join("\n- ")}\n المجموع: ${document.getElementById("total-price").textContent} درهم`;
+        
         fetch("https://formspree.io/f/manewyoq", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -81,7 +81,6 @@ function closeCart() {
         .catch(error => {
             console.error("Error:", error);
             alert("تعذر إرسال الطلب. تحقق من اتصالك بالإنترنت.");
-
         });
     });
   </script>

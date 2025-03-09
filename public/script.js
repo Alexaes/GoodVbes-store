@@ -14,16 +14,6 @@ const productCatalog = {
     "باك الأناقة": 99
   };
   
-  // إضافة منتج إلى السلة (تُستخدم في صفحة index)
-  function addToCart(productName) {
-    productName = productName.trim();
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push(productName);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount();
-    showNotification("تمت الإضافة إلى السلة", "success");
-  }
-  
   // تحديث عداد المنتجات على أيقونة السلة
   function updateCartCount() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -103,19 +93,16 @@ const productCatalog = {
   
           const addBtn = document.createElement("button");
           addBtn.textContent = "+";
-          addBtn.title = "إضافة وحدة";
           addBtn.onclick = () => { modifyCartItem(product, 1); };
           li.appendChild(addBtn);
   
           const removeBtn = document.createElement("button");
           removeBtn.textContent = "-";
-          removeBtn.title = "إزالة وحدة";
           removeBtn.onclick = () => { modifyCartItem(product, -1); };
           li.appendChild(removeBtn);
   
           const deleteBtn = document.createElement("button");
           deleteBtn.textContent = "×";
-          deleteBtn.title = "إزالة المنتج";
           deleteBtn.style.marginLeft = "10px";
           deleteBtn.onclick = () => { removeProductFromCart(product); };
           li.appendChild(deleteBtn);
@@ -164,16 +151,16 @@ const productCatalog = {
     displayCart();
     showNotification("تم مسح السلة بنجاح", "clear-cart-notification");
   }
-  
-  // إغلاق صفحة السلة والعودة للمتجر مع تأثير تلاشي
-  function closeCart() {
-    document.body.classList.add('fade-out');
-    setTimeout(() => {
-      window.location.href = "index.html";
-    }, 500);
+
+  function addToCart(productName) {
+    productName = productName.trim();
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(productName);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    showNotification("تمت الإضافة إلى السلة", "success");
   }
-  
-  // دالة عرض الإشعارات مع تأثيرات بسيطة
+
   function showNotification(message, type) {
     const notification = document.createElement("div");
     notification.className = `notification ${type}`;
@@ -191,8 +178,7 @@ const productCatalog = {
       }, 500);
     }, 2000);
   }
-  
-  // عند تحميل الصفحة، إضافة تأثير fade‑in وتحديث العداد وعرض السلة إن وُجدت
+
   document.addEventListener("DOMContentLoaded", function() {
     document.body.classList.add('fade-in');
     updateCartCount();

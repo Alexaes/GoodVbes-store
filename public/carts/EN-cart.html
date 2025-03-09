@@ -3,50 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>السلة</title>
-  <link rel="stylesheet" href="cart.css">
+  <title>Cart</title>
+  <link rel="stylesheet" href="../cart.css">
 </head>
 <body>
   <section id="cart">
-    <h2>محتويات السلة</h2>
+    <h2>Cart contents</h2>
 
-    <!-- نموذج المعلومات الشخصية -->
     <form id="order-form">
       <div id="personal-info-form">
-        <label for="name">الاسم:</label>
+        <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
 
-        <label for="address">العنوان:</label>
+        <label for="address">The address:</label>
         <input type="text" id="address" name="address" required><br>
 
-        <label for="phone">رقم الهاتف:</label>
+        <label for="phone">Phone number:</label>
         <input type="tel" id="phone" name="phone" required><br>
 
         <input type="hidden" id="order" name="order">
       </div>
 
-      <!-- محتويات السلة -->
       <div class="cart-content">
-        <p id="cart-empty" style="display: none;">السلة فارغة</p>
+        <p id="cart-empty" style="display: none;">Cart is empty</p>
         <ul id="cart-items"></ul>
-        <p id="cart-total">المجموع: <span id="total-price">0</span> درهم</p>
+        <p id="cart-total">Total: <span id="total-price">0</span> DH</p>
 
         <div class="cart-buttons">
-          <button id="checkout-button" type="submit">إتمام الشراء</button>
-          <button id="clear-cart" type="button" onclick="clearCart()">تفريغ السلة</button>
-          <button id="close-cart" type="button" onclick="closeCart()">إغلاق السلة</button>
+          <button id="checkout-button" type="submit">Complet the order</button>
+          <button id="clear-cart" type="button" onclick="clearCart()">Clear cart</button>
+          <button id="close-cart" type="button" onclick="closeCart()">Close cart</button>
         </div>
       </div>
     </form>
   </section>
 
-  <script src="script.js"></script>
+  <script src="../script.js"></script>
   <script>
 
 function closeCart() {
     document.body.classList.add('fade-out');
     setTimeout(() => {
-      window.location.href = "index.html";
+      window.location.href = "../languages/english.html";
     }, 500);
   }
 
@@ -63,7 +61,7 @@ function closeCart() {
             return;
         }
 
-        let orderText = `👤 الاسم: ${name}\n📍 العنوان: ${address}\n📞 الهاتف: ${phone}\n🛒 المنتجات:\n- ${cartItems.join("\n- ")}\n💰 المجموع: ${document.getElementById("total-price").textContent} درهم`;
+        let orderText = `${cartItems.join("\n- ")}\n المجموع: ${document.getElementById("total-price").textContent} درهم`;
 
         fetch("https://formspree.io/f/manewyoq", {
             method: "POST",
@@ -81,7 +79,6 @@ function closeCart() {
         .catch(error => {
             console.error("Error:", error);
             alert("تعذر إرسال الطلب. تحقق من اتصالك بالإنترنت.");
-
         });
     });
   </script>
