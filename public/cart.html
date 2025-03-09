@@ -63,7 +63,7 @@ function closeCart() {
             return;
         }
 
-        let orderText = `👤 الاسم: ${name}\n📍 العنوان: ${address}\n📞 الهاتف: ${phone}\n🛒 المنتجات:\n- ${cartItems.join("\n- ")}\n💰 المجموع: ${document.getElementById("total-price").textContent} درهم`;
+        let orderText = `المنتجات:\n- ${cartItems.join("\n- ")}\n المجموع: ${document.getElementById("total-price").textContent} درهم`;
 
         fetch("https://formspree.io/f/manewyoq", {
             method: "POST",
