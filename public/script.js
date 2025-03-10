@@ -158,6 +158,7 @@ const productCatalog = {
     cart.push(productName);
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
+    displayCart();
     showNotification("تمت الإضافة إلى السلة", "success");
   }
 
@@ -173,6 +174,7 @@ const productCatalog = {
   
     setTimeout(() => {
       notification.style.opacity = "0";
+      
       setTimeout(() => {
         notification.remove();
       }, 500);

@@ -65,7 +65,7 @@
   
   /* تخصيص إشعار مسح السلة */
   .clear-cart-notification {
-    background-color: #ffc107;
+    background-color: #ff0000;
   }
   
   @keyframes slideIn {

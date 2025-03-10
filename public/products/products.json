@@ -1,0 +1,56 @@
+{
+    "products": [
+      {
+        "name": "مبخرة بديع صفراء",
+        "price": 29,
+        "image": "photos/photo9.png"
+      },
+      {
+        "name": "مبخرة بديع زرقاء",
+        "price": 29,
+        "image": "photos/photo10.png"
+      },
+      {
+        "name": "مبخرة الوردة",
+        "price": 19,
+        "image": "photos/photo5.png"
+      },
+      {
+        "name": "مبخرة النخلة",
+        "price": 19,
+        "image": "photos/photo11.png"
+      },
+      {
+        "name": "بلاطو مرايا",
+        "price": 39,
+        "image": "photos/photo7.png"
+      },
+      {
+        "name": "قرعة البخور",
+        "price": 19,
+        "image": "photos/photo4.png"
+      },
+      {
+        "name": "ملقط البخور",
+        "price": 8,
+        "image": "photos/photo6.png"
+      },
+      {
+        "name": "بخور",
+        "price": 25,
+        "image": "photos/photo8.png"
+      }
+    ],
+    "packs": [
+      {
+        "name": "باك الفخامة",
+        "price": 109,
+        "image": "photos/photo2.png"
+      },
+      {
+        "name": "باك الأناقة",
+        "price": 99,
+        "image": "photos/photo3.png"
+      }
+    ]
+  }

@@ -177,6 +177,55 @@ section h2 {
     font-size: 0.8rem;
 }
 
+  /* تنسيق الإشعارات */
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    opacity: 0;
+    z-index: 9999;
+    animation: slideIn 0.5s forwards, fadeOut 0.5s forwards 2.5s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+  }
+  
+  .notification.success {
+    background-color: #28a745;
+  }
+  
+  .notification.error {
+    background-color: #dc3545;
+  }
+  
+  .add-to-cart-notification {
+    background-color: #00ff00;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+
 /* روابط التواصل الاجتماعي */
 #links .centered-links {
     display: flex;
@@ -269,14 +318,6 @@ section h2 {
     }
 }
 
-.notification {
-    top: 5px;
-    right: 15px;
-    font-size: 14px;
-    padding: 10px 20px;
-    transform: none;
-}
-
 @media (max-width: 480px) {
     header h1 {
         font-size: 2rem;
@@ -284,12 +325,4 @@ section h2 {
     nav a {
         font-size: 0.9rem;
     }
-}
-
-.notification {
-    top: 3px;
-    right: 10px;
-    font-size: 12px;
-    padding: 8px 15px;
-    transform: none;
 }
