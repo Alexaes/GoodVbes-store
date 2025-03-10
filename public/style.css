@@ -84,20 +84,12 @@ section h2 {
 .product { 
     flex: 1 1 calc(50% - 40px);
     max-width: calc(50% - 40px);
-    background: #fff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 20px;
     margin: 15px;
     text-align: center;
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
     width: calc(50% - 40px);
     min-width: 250px;
-}
-
-.product:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow);
 }
 
 /* تحسين عرض الصور بإضافة حواف دائرية وظل خفيف */
@@ -235,35 +227,30 @@ section h2 {
 }
 
 #links .link {
-    background: var(--primary-color);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
+    background: #ffffff00;
+    color: #333;
+    padding: 5px 10px;
     text-decoration: none;
-    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background var(--transition-speed), transform var(--transition-speed);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    border: 1.5px solid #e1d3cb;
 }
 
 #links .link:hover {
-    background: #6d5a5497;
+    background: #ffffff00;
     transform: scale(1.05);
 }
 
 #links .link i {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
-/* قسم اختيار اللغة */
 #language-selector {
-    background: var(--bg-color);
-    padding: 20px;
+    background: #333;
+    padding: 10px;
     text-align: center;
-    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 #language-selector .centered-links {
@@ -273,10 +260,8 @@ section h2 {
 
 #language-selector .centered-links a {
     text-decoration: none;
-    color: var(--font-color);
-    background: var(--light-color);
+    color: white;
     padding: 10px 12px;
-    border-radius: var(--border-radius);
     font-weight: bold;
     transition: background var(--transition-speed), transform var(--transition-speed);
 }
@@ -295,6 +280,20 @@ section h2 {
     color: #fff;
     font-size: 0.9rem;
     margin-top: 30px;
+}
+
+#footer-link a {
+text-decoration: none;
+color: white;
+font-weight: bold;
+margin-left: 5px;
+transition: background var(--transition-speed), transform var(--transition-speed);
+}
+
+#footer-link .link a:hover {
+    background: var(--secondary-color);
+    color: #000000;
+    transform: translateY(-2px);
 }
 
 /* على الحاسوب: عمودين للمنتجات */
