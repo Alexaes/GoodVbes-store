@@ -157,7 +157,6 @@ function addToCart(productName) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
   displayCart();
-  showNotification("تمت الإضافة إلى السلة", "success");
 }
 
 function showNotification(message, type) {
@@ -225,7 +224,7 @@ function resetSearch() {
 function performSearch() {
   let searchInput = document.getElementById("search-input");
   if (!searchInput) {
-    console.error("❌ لم يتم العثور على مربع البحث!");
+    console.error(" لم يتم العثور على مربع البحث!");
     return;
   }
 
@@ -240,7 +239,7 @@ function performSearch() {
   // استخدام الكلاس الصحيح "product" بدلاً من "product-item"
   let productList = document.querySelectorAll(".product");
   if (!productList.length) {
-    console.error("❌ لم يتم العثور على المنتجات!");
+    console.error(" لم يتم العثور على المنتجات!");
     return;
   }
 
@@ -258,7 +257,7 @@ function performSearch() {
   });
 
   if (!found) {
-    showNotification("❌ لم يتم العثور على المنتج المطلوب!", "error");
+    showNotification("! لم يتم العثور على المنتج المطلوب", "error");
   } else {
     showNotification("تم العثور على نتائج البحث", "success");
   }
@@ -273,7 +272,6 @@ function addClearSearchButton() {
   clearButton.addEventListener('click', function() {
     document.getElementById('search-input').value = '';
     resetSearch();
-    showNotification("تم إظهار جميع المنتجات", "success");
   });
   
   // Add it after the search input but before the search button
