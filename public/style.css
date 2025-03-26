@@ -55,7 +55,7 @@ nav {
 }
 nav.active {
     display: block;
-    background: var(--primary-color);
+    background: var(--header-bg);
 }
 
 nav ul {
@@ -229,7 +229,7 @@ nav.active {
         top: 70px;
         left: 0;
         width: 100%;
-        background: var(--header-bg);
+        background: hsla(33, 40%, 24%, 0.975);
     }
     nav.active ul {
         flex-direction: column;
