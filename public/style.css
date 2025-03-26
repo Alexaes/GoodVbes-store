@@ -1,10 +1,9 @@
-/* تعريف المتغيرات الأساسية */
 :root {
-    --primary-color: #654727;       /* بني داكن */
-    --secondary-color: #997A57;       /* بني متوسط */
-    --light-color: #BA9E81;           /* بني فاتح */
-    --bg-color: #FAF9F1;              /* خلفية الموقع */
-    --font-color: #513E2E;            /* لون الخط */
+    --primary-color: #654727;
+    --secondary-color: #997A57;
+    --light-color: #BA9E81;
+    --bg-color: #FAF9F1;
+    --font-color: #513E2E;
     --header-bg: linear-gradient(135deg, #654727, #513E2E);
     --transition-speed: 0.3s;
     --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -12,7 +11,6 @@
     --font-family: 'Roboto', sans-serif;
 }
 
-/* إعادة تعيين بعض الخصائص الأساسية */
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +23,6 @@ body {
     color: var(--font-color);
 }
 
-/* تنسيق الهيدر الأصلي مع التعديل */
 header {
     background: var(--header-bg);
     position: sticky;
@@ -43,13 +40,11 @@ header {
     margin: 0 auto;
 }
 
-/* تنسيق الشعار */
 .logo img {
     height: 50px;
     margin-left: 60px;
 }
 
-/* قائمة التنقل */
 nav {
     display: none;
 }
@@ -84,7 +79,6 @@ nav ul li a:hover {
     color: var(--secondary-color);
 }
 
-/* أيقونات الهيدر */
 .header-icons {
     display: flex;
     align-items: center;
@@ -102,7 +96,6 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* شريط البحث */
 .search-container {
     display: none;
     position: absolute;
@@ -153,7 +146,6 @@ nav ul li a:hover {
     background: var(--light-color);
 }
 
-/* شريط البحث البديل */
 .search-bar {
     display: none;
     position: absolute;
@@ -205,14 +197,12 @@ nav ul li a:hover {
     border-radius: 50%;
 }
 
-/* زر القائمة (hamburger) */
 .menu-toggle {
     font-size: 1.5rem;
     color: #fff;
     cursor: pointer;
 }
 
-/* تفعيل القائمة المنسدلة عند الأجهزة الصغيرة */
 nav.active {
     display: block;
 }
@@ -222,14 +212,14 @@ nav.active {
     nav, .header-icons {
        display: none;
     }
-    /* عند تفعيل القائمة */
+
     nav.active {
         display: block;
         position: absolute;
-        top: 70px;
+        top: 88px;
         left: 0;
         width: 100%;
-        background: hsla(33, 40%, 24%, 0.975);
+        background: var(--header-bg);
     }
     nav.active ul {
         flex-direction: column;
@@ -242,7 +232,6 @@ nav.active {
     }
 }
 
-/* تنسيق عناوين الأقسام */
 section h2 {
     text-align: center;
     margin-top: 20px;
@@ -251,13 +240,11 @@ section h2 {
     font-size: 1.8rem;
 }
 
-/* جعل عناوين المنتجات والباكس تظهر في صف منفصل */
 #products > h2,
 #packs > h2 {
     flex-basis: 100%;
 }
 
-/* تنسيق الحاوية للمنتجات والباكس */
 #products, #packs {
     display: flex;
     flex-direction: row;
@@ -403,37 +390,9 @@ section h2 {
     font-size: 2rem;
 }
 
-/* محددات اختيار اللغة */
-#language-selector {
-    background: var(--primary-color);
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#language-selector .centered-links {
-    display: inline-flex;
-    gap: 10px;
-}
-
-#language-selector .centered-links a {
-    text-decoration: none;
-    color: #fff;
-    padding: 10px 12px;
-    font-weight: bold;
-    transition: background var(--transition-speed), transform var(--transition-speed);
-}
-
-#language-selector .centered-links a:hover {
-    background: var(--secondary-color);
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-/* حقوق الملكية */
 .footer {
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     background: var(--primary-color);
     color: #fff;
     font-size: 0.9rem;
