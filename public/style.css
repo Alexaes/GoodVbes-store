@@ -1,14 +1,14 @@
 :root {
-    --primary-color: #654727;
-    --secondary-color: #997A57;
-    --light-color: #BA9E81;
-    --bg-color: #FAF9F1;
-    --font-color: #513E2E;
-    --header-bg: linear-gradient(135deg, #654727, #513E2E);
+    --primary-color: #A1123D;    /* أحمر توتي غني، أساسي وفخم */
+    --secondary-color: #C92C6D;  /* وردي متوسط، حيوي وجذاب */
+    --light-color: #F7A1C4;      /* وردي فاتح، ناعم وأنثوي */
+    --bg-color: #FBE3E8;         /* خلفية وردية باهتة تعطي راحة للعين */
+    --font-color: #3E1D32;       /* بنفسجي غامق مائل للبني، ممتاز للنصوص */
+    --header-bg: #FFD6DE;        /* خلفية رأس وردية هادئة تشبه الغروب */
     --transition-speed: 0.3s;
     --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     --border-radius: 5px;
-    --font-family: 'Roboto', sans-serif;
+    --font-family: "Times New Roman", Times, serif;
 }
 
 * {
