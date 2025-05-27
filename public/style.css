@@ -237,6 +237,12 @@ nav ul li a:hover {
     font-weight: 500;
     color: #3f2f20;
   }
+
+  .cart-header {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+  }
   
   #total-price {
     font-weight: bold;
@@ -244,7 +250,7 @@ nav ul li a:hover {
     text-align: right;
     color: var(--font-color);
     margin-bottom: 15px;
-    
+
   }
 
   .cart-buttons {
@@ -259,6 +265,13 @@ nav ul li a:hover {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
+  }
+
+  #close-cart {
+    color: black;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 37px;
   }
   #checkout-button {
     background-color: var(--primary-color);
