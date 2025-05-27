@@ -1,13 +1,3 @@
-/* تعريف المتغيرات الأساسية */
-:root {
-  --primary-color: #654727;       /* بني داكن */
-  --secondary-color: #997A57;       /* بني متوسط */
-  --light-color: #BA9E81;           /* بني فاتح */
-  --bg-color: #FAF9F1;              /* خلفية الموقع */
-  --font-color: #513E2E;            /* لون الخط */
-}
-
-/* تعيين box-sizing لكل العناصر */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -182,7 +172,6 @@ h2 {
   transform: scale(1.02);
 }
 
-/* محتويات السلة */
 .cart-content {
   margin-top: 30px;
 }
@@ -215,7 +204,6 @@ h2 {
   font-weight: bold;
 }
 
-/* أزرار تعديل المنتجات داخل السلة */
 .cart-content button {
   background-color: transparent;
   border: none;

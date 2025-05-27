@@ -86,18 +86,8 @@ function displayCart() {
         totalPrice += itemTotal;
 
         const textSpan = document.createElement("span");
-        textSpan.textContent = `${product} × ${quantity} ${itemTotal} درهم`;
+        textSpan.textContent = `${product} ${price} Quantity × ${quantity}`;
         li.appendChild(textSpan);
-
-        const addBtn = document.createElement("button");
-        addBtn.textContent = "+";
-        addBtn.onclick = () => { modifyCartItem(product, 1); };
-        li.appendChild(addBtn);
-
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "-";
-        removeBtn.onclick = () => { modifyCartItem(product, -1); };
-        li.appendChild(removeBtn);
 
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "×";
@@ -289,3 +279,12 @@ document.addEventListener("DOMContentLoaded", function() {
   // Add clear search button
   addClearSearchButton();
 });
+
+function openCart() {
+  document.getElementById("cartPanel").classList.add("open");
+  displayCart();
+}
+
+function closeCart() {
+  document.getElementById("cartPanel").classList.remove("open");
+}

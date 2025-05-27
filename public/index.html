@@ -6,47 +6,55 @@
   <title>LUNOR BELVE</title>
   <link rel="icon" type="image/png" href="photos/photo12.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- هيدر الموقع -->
   <header>
     <div class="header-container">
-      <!-- زر القائمة (الهامبرغر) في اليسار -->
       <div class="menu-toggle" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
       </div>
-      <!-- الشعار في الوسط -->
       <div class="logo">
           <img src="photos/photo12.png" alt="Logo">
         </a>
       </div>
-      <!-- أيقونات البحث والسلة في اليمين -->
       <div class="header-icons">
         <a href="#" class="search-icon" onclick="toggleSearchBar()"><i class="fas fa-search"></i></a>
 <div class="search-container">
   <input type="text" id="search-input" placeholder="ابحث هنا..." onkeydown="searchProducts(event)">
   <button id="search-btn" onclick="performSearch()"><i class="fas fa-arrow-right"></i></button>
 </div>
-        <a href="cart.html" class="cart-icon" id="cart-icon">
-          <i class="fas fa-shopping-cart"></i>
-          <span id="cart-item-count">0</span>
-        </a>
-      </div>
+    <div class="cart-icon" id="cart-icon" onclick="openCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cart-item-count">0</span>
     </div>
-    <!-- قائمة التنقل المخفية (تظهر عند النقر على زر القائمة) -->
+    <!-- Sidebar للسلة -->
+<div id="cartPanel" class="cart-panel">
+  <div class="cart-header">
+    <span>votre panier</span>
+    <button onclick="closeCart()">×</button>
+  </div>
+  <ul id="cart-items"></ul>
+  <p id="cart-empty">Votre panier est vide</p>
+    <p>Montant total <span id="total-price">0</span> MAD</p>
+  <button id="checkout-button" onclick="checkout()">Continuer vers le paiement</button>
+  <button id="clear-cart" onclick="clearCart()">مسح السلة</button>
+</div>
     <nav id="navbar">
       <ul>
         <li><a href="#products">Products</a></li>
         <li><a href="#packs">Packs</a></li>
-        <li><a href="#links">Contact Us</a></li>
+        <li><a href="ContactUs.html">Contact Us</a></li>
       </ul>
     </nav>
   </header>
-
-  <!-- قسم المنتجات -->
+  <div class="title">
+  <h2>Welcome to LUNOR BELVE STORE</h2>
+  <p> Discover our exquisite collection of traditional and modern incense burners, perfect for any occasion.</p>
+  </div>
   <section id="products">
     <h2>Products</h2>
     <div class="product">
@@ -135,26 +143,6 @@
     </div>
   </section>
 
-  <!-- قسم التواصل -->
-  <section id="links">
-    <h2>Contact Us</h2>
-    <div class="centered-links">
-      <a class="link" href="https://www.instagram.com/Go0d__v1bes">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a class="link" href="https://wa.link/yeo7ti">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-      <a class="link" href="https://www.facebook.com/share/14wVZXpY95/">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a class="link" href="http://tiktok.me/_go0d_v1bes/">
-        <i class="fab fa-tiktok"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- التذييل -->
   <footer class="footer">
     <section id="footer-link">
       <div class="link">
@@ -163,8 +151,8 @@
     </section>
   </footer>
 
-  <!-- سكريبتات جافا سكربت -->
   <script>
+
     function toggleMenu() {
       const navbar = document.getElementById('navbar');
       navbar.classList.toggle('active');

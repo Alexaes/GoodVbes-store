@@ -185,14 +185,123 @@ nav ul li a:hover {
     color: #fff;
     transition: transform 0.2s;
 }
+/* ======= تصميم السلة الجانبية ======= */
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    height: 100%;
+    background: linear-gradient(to bottom, #fffdf7, #f3e9d2);
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+    transition: right 0.4s ease;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 20px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+  
+  /* عند فتح السلة */
+  .cart-panel.open {
+    right: 0;
+  }
+  
+  /* عنوان السلة */
+  .cart-panel h2 {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    color: #5c432b;
+    border-bottom: 2px solid #e0d2bb;
+    padding-bottom: 10px;
+  }
+  
+  /* المنتجات */
+  .cart-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    flex: 1;
+    overflow-y: auto;
+  }
+  .cart-panel li {
+    background-color: #fffaf0;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: #3f2f20;
+  }
+  
+  #total-price {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: right;
+    color: var(--font-color);
+    margin-bottom: 15px;
+    
+  }
 
-#cart-item-count {
-    position: absolute;
-    top: -8px;
-    right: -8px;
+  .cart-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cart-buttons button {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  #checkout-button {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 3px;
+  }
+  #checkout-button:hover {
+    background-color: var(--light-color);
+    transform: translateY(-2px);
+  }
+  #clear-cart {
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 3px;
+  }
+  #clear-cart:hover {
+    background-color: var(--light-color);
+    transform: translateY(-2px);
+  }
+
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .cart-panel input,
+  .cart-panel button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+  }
+
+  #cart-item-count {
+    position: relative;
+    top: -17px;
+    left: -12px;
     background: var(--secondary-color);
     color: #fff;
     font-size: 0.7rem;
+    font-weight: bold;
     padding: 2px 5px;
     border-radius: 50%;
 }
@@ -230,6 +339,48 @@ nav.active {
         padding: 10px 0;
         border-bottom: 1px solid rgba(255,255,255,0.2);
     }
+}
+
+.breadcrumbs-container {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin: 20px 0;
+  }
+  
+  .breadcrumbs-listings {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .first-listing {
+    color: #333 !important;
+    text-decoration: none !important;
+    font-weight: bold;
+  }
+  
+  .listings__item a {
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+  }
+  
+  .listings__item a:hover {
+    text-decoration: underline;
+  }
+  
+  .listings__item span {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  ion-icon {
+    color: #888;
+    font-size: 16px;
+  }
+
+.title {
+    text-align: center;
+    margin: 20px;
 }
 
 section h2 {
@@ -293,7 +444,6 @@ section h2 {
     color: var(--secondary-color);
 }
 
-/* زر إضافة إلى السلة */
 .add-to-cart {
     width: auto;
     background: var(--primary-color);
@@ -363,7 +513,21 @@ section h2 {
     }
 }
 
-/* روابط التواصل الاجتماعي */
+  footer {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  footer nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
 #links .centered-links {
     display: flex;
     justify-content: center;
