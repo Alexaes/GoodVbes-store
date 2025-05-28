@@ -109,8 +109,8 @@ function displayCart() {
         priceAndDeleteContainer.style.display = "flex";
         priceAndDeleteContainer.style.flexDirection = "column";
         priceAndDeleteContainer.style.alignItems = "center";
-        priceAndDeleteContainer.style.gap = "4px"; // مسافة بين السعر والزر
-        priceAndDeleteContainer.style.marginLeft = "12px"; // مسافة من النص
+        priceAndDeleteContainer.style.gap = "4px";
+        priceAndDeleteContainer.style.marginLeft = "12px";
         
         const priceOnlyText = document.createElement("span");
         priceOnlyText.textContent = `${price} MAD`;
@@ -139,34 +139,62 @@ function displayCart() {
   }
 }
 
-function checkout() {
-  const nameInput = document.getElementById("name");
-  const addressInput = document.getElementById("address");
-  const phoneInput = document.getElementById("phone");
+  function showNotification(message, type) {
+    const notif = document.createElement("div");
+    notif.textContent = message;
+    notif.className = `notification ${type}`;
+    document.body.appendChild(notif);
 
-  if (!nameInput || !addressInput || !phoneInput) {
-    showNotification("يرجى ملء البيانات الشخصية", "error");
-    return;
+    setTimeout(() => {
+      notif.remove();
+    }, 3000);
   }
 
-  const name = nameInput.value.trim();
-  const address = addressInput.value.trim();
-  const phone = phoneInput.value.trim();
-
-  if (name === "" || address === "" || phone === "") {
-    showNotification("يرجى ملء البيانات الشخصية بشكل صحيح", "error");
-    return;
+  function clearCart() {
+    localStorage.removeItem("cart");
   }
 
-  // تنفيذ عملية الشراء
-  showNotification(`شكراً ${name}، تم إتمام الشراء بنجاح!`, "success");
-  clearCart();
+  // بدل الدالة checkout، اربطها مع الفورم مباشرة:
+  document.getElementById('order-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-  // تفريغ حقول البيانات بعد إتمام الطلب
-  nameInput.value = "";
-  addressInput.value = "";
-  phoneInput.value = "";
-}
+    const nameInput = document.getElementById("name");
+    const addressInput = document.getElementById("address");
+    const phoneInput = document.getElementById("phone");
+
+    if (!nameInput || !addressInput || !phoneInput) {
+      showNotification("يرجى ملء البيانات الشخصية", "error");
+      return;
+    }
+
+    const name = nameInput.value.trim();
+    const address = addressInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const payment = document.querySelector('input[name="payment"]:checked')?.value || "";
+
+    if (name === "" || address === "" || phone === "") {
+      showNotification("يرجى ملء البيانات الشخصية بشكل صحيح", "error");
+      return;
+    }
+
+    const orderDetails = {
+      name,
+      address,
+      phone,
+      paymentMethod: payment,
+      order: JSON.parse(localStorage.getItem('cart')) || []
+    };
+
+    console.log("تفاصيل الطلب:", orderDetails);
+
+    showNotification(`شكراً ${name}، تم إتمام الشراء بنجاح!`, "success");
+    clearCart();
+
+    // تفريغ الحقول
+    nameInput.value = "";
+    addressInput.value = "";
+    phoneInput.value = "";
+  });
 
 // تفريغ السلة بالكامل مع إشعار عند المسح
 function clearCart() {

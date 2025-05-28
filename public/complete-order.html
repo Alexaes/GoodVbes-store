@@ -1,71 +1,234 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="10;url=index.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تم الطلب بنجاح</title>
+  <title>Contact Us</title>
+  <link rel="icon" type="image/png" href="photos/photo12.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
+body {
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
 
-    body {
-      background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      color: #333;
-    }
-    .container {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-      width: 90%;
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-    .gif-container {
-      margin: 20px 0;
-    }
-    .gif-container img {
-      max-width: 50%;
-      height: auto;
-      border-radius: 10px;
-    }
-    p {
-      font-size: 1.1em;
-      margin: 20px 0;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #667566;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 1em;
-      transition: background 0.3s ease;
-    }
-    .btn:hover {
-      background: #697b6a;
-    }
+main#complete-main {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+main#complete-main h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  color: #C92C6D;
+  font-weight: 700;
+}
+
+main#complete-main p {
+  font-size: 1.25rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+main#complete-order h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: #FFD6DE;
+  font-weight: 700;
+}
+
+section#complete-order {
+  max-width: 600px;
+  margin: 40px auto 60px;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+section#complete-order:hover {
+  box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+}
+
+/* Form styling */
+form#order-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: gray;
+}
+
+form#order-form input[type="text"],
+form#order-form input[type="tel"] {
+  width: 100%;
+  padding: 14px 15px;
+  margin-bottom: 24px;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease;
+}
+
+form#order-form input[type="text"]:focus,
+form#order-form input[type="tel"]:focus {
+  border-color: #2e7d32;
+  outline: none;
+  box-shadow: 0 0 6px rgba(46,125,50,0.4);
+}
+
+div#payment-method {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+div#payment-method h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: #FFD6DE;
+  font-weight: 700;
+}
+
+div#payment-method label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+div#payment-method input[type="radio"] {
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+  accent-color: #7d2e7a;
+  cursor: pointer;
+}
+
+/* Submit button */
+form#order-form button[type="submit"] {
+  background-color: #FFD6DE;
+  color: white;
+  padding: 16px 0;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(125, 46, 118, 0.4);
+}
+
+form#order-form button[type="submit"]:hover {
+  background-color: #ff6dce;
+  box-shadow: 0 6px 14px rgba(27, 94, 32, 0.8);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  section#complete-order {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+
+  main#complete-main h1 {
+    font-size: 2rem;
+  }
+
+  main#complete-main p {
+    font-size: 1rem;
+  }
+}
   </style>
-</head>
 <body>
-  <div class="container">
-    <h1>! لقد تم طلبك بنجاح</h1>
-    <div class="gif-container">
-      <img src="https://media.giphy.com/media/5K7ngCtszoxxbaBieC/giphy.gif" alt="نجاح الطلب">
-      <p>سيتم تحويلك إلى الصفحة الرئيسية خلال 10 ثواني</p>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="photos/photo12.png" alt="Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#packs">Packs</a></li>
+          <li><a href="ContactUs.html">Contact Us</a></li>
+        </ul>
+      </nav>
     </div>
-    <a href="index.html" class="btn">العودة إلى الصفحة الرئيسية</a>
+  </header>
+  <div class="breadcrumbs-container">
+    <div class="breadcrumbs-listings">
+      <div class="listings__item">
+        <a href="/" class="first-listing">Home</a>
+      </div>
+          <div class="listings__item">
+            <ion-icon name="chevron-back-outline" role="img" class="md flip-rtl hydrated"></ion-icon>
+          </div>
+          <div class="listings__item">
+            <span class="second-listing">Complet order</span>
+          </div>
+    </div>
   </div>
+
+  <main id="complete-main">
+    <h1>Complete Your Order</h1>
+    <p>Please fill in your personal information to complete the order.</p>
+  </main>
+
+  <section id="complete-order">
+    <h3>: المعلومات الشخصية</h3>
+    <form id="order-form" action="https://formspree.io/f/manewyoq" method="POST">
+      <input type="hidden" name="_subject" value="طلب جديد من الموقع">
+      <input type="hidden" name="_language" value="ar">
+      
+      <label for="name">الاسم:</label>
+      <input type="text" id="name" name="name" required><br>
+    
+      <label for="address">العنوان:</label>
+      <input type="text" id="address" name="address" required><br>
+    
+      <label for="phone">رقم الهاتف:</label>
+      <input type="tel" id="phone" name="phone" required><br>
+    
+      <input type="hidden" id="order" name="order">
+    
+      <div id="payment-method">
+        <h3>طريقة الدفع</h3>
+        <label><input type="radio" name="paymentMethod" value="الدفع عند الاستلام" checked> الدفع عند الاستلام</label><br>
+        <label><input type="radio" name="paymentMethod" value="باي بال"> باي بال</label><br>
+        <label><input type="radio" name="paymentMethod" value="تحويل بنكي"> تحويل بنكي</label><br>
+        <label><input type="radio" name="paymentMethod" value="أخرى"> أخرى</label><br>
+      </div>
+    
+      <button type="submit">إكمال</button>
+    </form>
+    
+        </section> 
+        <footer class="footer">
+         <section id="footer-link">
+         <div class="link">
+        Developed by <a href="https://www.instagram.com/2o7_v" target="_blank">2o7_v</a>
+      </div>
+    </section>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const orderData = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("order").value = JSON.stringify(orderData);
+    });
+  </script>
 </body>
 </html>
