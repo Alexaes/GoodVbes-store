@@ -1,4 +1,3 @@
-// تعريف خريطة أسعار المنتجات
 const productCatalog = {
   "مبخرة بديع صفراء": 29,
   "مبخرة بديع زرقاء": 29,
@@ -84,17 +83,55 @@ function displayCart() {
         const price = productCatalog[product] || 0;
         const itemTotal = price * quantity;
         totalPrice += itemTotal;
-
+        
+        li.style.display = "flex";
+        li.style.justifyContent = "space-between";
+        li.style.alignItems = "flex-start";
+        li.style.marginBottom = "10px";
+        
         const textSpan = document.createElement("span");
-        textSpan.textContent = `${product} ${price} Quantity × ${quantity}`;
-        li.appendChild(textSpan);
-
+        textSpan.style.display = "flex";
+        textSpan.style.flexDirection = "column";
+        
+        const productText = document.createElement("span");
+        productText.textContent = `${product}`;
+        productText.style.fontWeight = "600";
+        
+        const quantityText = document.createElement("span");
+        quantityText.textContent = `Quantity: ${quantity}`;
+        quantityText.style.fontSize = "0.9em";
+        quantityText.style.color = "#555";
+        
+        textSpan.appendChild(productText);
+        textSpan.appendChild(quantityText);
+        
+        const priceAndDeleteContainer = document.createElement("div");
+        priceAndDeleteContainer.style.display = "flex";
+        priceAndDeleteContainer.style.flexDirection = "column";
+        priceAndDeleteContainer.style.alignItems = "center";
+        priceAndDeleteContainer.style.gap = "4px"; // مسافة بين السعر والزر
+        priceAndDeleteContainer.style.marginLeft = "12px"; // مسافة من النص
+        
+        const priceOnlyText = document.createElement("span");
+        priceOnlyText.textContent = `${price} MAD`;
+        priceOnlyText.style.color = "black";
+        priceOnlyText.style.fontWeight = "bold";
+        priceOnlyText.style.fontSize = "0.95em";
+        
         const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "×";
-        deleteBtn.style.marginLeft = "10px";
+        deleteBtn.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
+        deleteBtn.style.width = "37px";
+        deleteBtn.style.border = "none";
+        deleteBtn.style.backgroundColor = "#ffffff00";
+        deleteBtn.style.cursor = "pointer";
         deleteBtn.onclick = () => { removeProductFromCart(product); };
-        li.appendChild(deleteBtn);
-
+        
+        priceAndDeleteContainer.appendChild(priceOnlyText);
+        priceAndDeleteContainer.appendChild(deleteBtn);
+        
+        li.appendChild(textSpan);
+        li.appendChild(priceAndDeleteContainer);
+        
         cartItemsList.appendChild(li);
       }
     }
@@ -102,7 +139,6 @@ function displayCart() {
   }
 }
 
-// إتمام عملية الشراء (محاكاة) مع تفريغ حقول البيانات
 function checkout() {
   const nameInput = document.getElementById("name");
   const addressInput = document.getElementById("address");

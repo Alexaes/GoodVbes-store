@@ -185,7 +185,7 @@ nav ul li a:hover {
     color: #fff;
     transition: transform 0.2s;
 }
-/* ======= تصميم السلة الجانبية ======= */
+
 .cart-panel {
     position: fixed;
     top: 0;
@@ -203,12 +203,10 @@ nav ul li a:hover {
     border-bottom-left-radius: 15px;
   }
   
-  /* عند فتح السلة */
   .cart-panel.open {
     right: 0;
   }
   
-  /* عنوان السلة */
   .cart-panel h2 {
     font-size: 1.4em;
     margin-bottom: 20px;
@@ -274,9 +272,17 @@ nav ul li a:hover {
     width: 37px;
   }
   #checkout-button {
+    display: block;
+    text-align: center;
     background-color: var(--primary-color);
+    width: 100%;
+    padding: 6px;
     color: white;
     border-radius: 3px;
+    text-decoration: none;
+    border: black 2px solid;
+    margin: 10px 0;
+
   }
   #checkout-button:hover {
     background-color: var(--light-color);
