@@ -154,7 +154,6 @@ function displayCart() {
     localStorage.removeItem("cart");
   }
 
-  // بدل الدالة checkout، اربطها مع الفورم مباشرة:
   document.getElementById('order-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -190,13 +189,11 @@ function displayCart() {
     showNotification(`شكراً ${name}، تم إتمام الشراء بنجاح!`, "success");
     clearCart();
 
-    // تفريغ الحقول
     nameInput.value = "";
     addressInput.value = "";
     phoneInput.value = "";
   });
 
-// تفريغ السلة بالكامل مع إشعار عند المسح
 function clearCart() {
   localStorage.removeItem("cart");
   updateCartCount();
@@ -240,8 +237,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-// وظائف البحث
-
 function toggleSearchBar() {
   const searchContainer = document.querySelector('.search-container');
   searchContainer.classList.toggle('active');
@@ -260,15 +255,13 @@ function searchProducts(event) {
   if (event.key === 'Enter') {
     performSearch();
   } else if (event.key === 'Escape') {
-    // Reset search when pressing Escape key
     document.getElementById('search-input').value = '';
     resetSearch();
-    toggleSearchBar(); // Close the search bar
+    toggleSearchBar();
   }
 }
 
 function resetSearch() {
-  // Show all products again
   let productList = document.querySelectorAll(".product");
   productList.forEach(product => {
     product.style.display = "block";
@@ -284,13 +277,11 @@ function performSearch() {
 
   let query = searchInput.value.trim().toLowerCase();
   if (query === "") {
-    // If the search input is empty, show all products
     resetSearch();
     showNotification("تم إظهار جميع المنتجات", "success");
     return;
   }
 
-  // استخدام الكلاس الصحيح "product" بدلاً من "product-item"
   let productList = document.querySelectorAll(".product");
   if (!productList.length) {
     console.error(" لم يتم العثور على المنتجات!");
@@ -300,7 +291,6 @@ function performSearch() {
   let found = false;
 
   productList.forEach(product => {
-    // استخدام العنصر h3 داخل كل منتج
     let productNameElem = product.querySelector("h3");
     if (!productNameElem) return;
 
@@ -317,7 +307,6 @@ function performSearch() {
   }
 }
 
-// Add a clear button to the search bar
 function addClearSearchButton() {
   const searchContainer = document.querySelector('.search-container');
   const clearButton = document.createElement('button');
@@ -328,11 +317,9 @@ function addClearSearchButton() {
     resetSearch();
   });
   
-  // Add it after the search input but before the search button
   searchContainer.insertBefore(clearButton, document.getElementById('search-btn'));
 }
 
-// Call this function when the page loads
 document.addEventListener("DOMContentLoaded", function() {
   document.body.classList.add('fade-in');
   updateCartCount();
@@ -340,7 +327,6 @@ document.addEventListener("DOMContentLoaded", function() {
     displayCart();
   }
   
-  // Add clear search button
   addClearSearchButton();
 });
 

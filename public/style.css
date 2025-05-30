@@ -556,7 +556,6 @@ section h2 {
     color: #555;
   }
   
-  /* Form Container */
   #complete-order {
     max-width: 600px;
     margin: 40px auto;
@@ -579,7 +578,7 @@ section h2 {
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    box-sizing: border-box;  /* تأكد من أن الحشو لا يؤثر على العرض */
+    box-sizing: border-box;
   }
   
   #payment-method h3 {
@@ -657,26 +656,93 @@ section h2 {
 }
 
 .footer {
-    text-align: center;
-    padding: 20px;
-    background: var(--primary-color);
-    color: #fff;
-    font-size: 0.9rem;
-    margin-top: 30px;
+  background-color: #222;
+  color: #eee;
+  padding: 40px 20px;
+  font-size: 0.95em;
 }
 
-#footer-link a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    margin-left: 5px;
-    transition: background var(--transition-speed), transform var(--transition-speed);
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-#footer-link .link a:hover {
-    background: var(--secondary-color);
-    color: #000;
-    transform: translateY(-2px);
+.footer-logo h2 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+.footer-logo p {
+  color: #ccc;
+}
+
+.footer-shipping {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ccc;
+}
+
+.footer-shipping i {
+  font-size: 1.5em;
+  color: #ccc;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-social a {
+  font-size: 1.5em;
+  margin-right: 15px;
+  color: #ccc;
+}
+
+.footer-social a:hover {
+  color: #fff;
+}
+
+.footer-payment i {
+  font-size: 1.8em;
+  margin-right: 10px;
+  color: #ccc;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #444;
+  padding-top: 15px;
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.footer-bottom a {
+  color: #eee;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: #fff;
 }
 
 /* على الحاسوب: عمودين للمنتجات */
@@ -688,7 +754,6 @@ section h2 {
     }
 }
 
-/* على الهاتف والأجهزة الصغيرة: تعديل عرض المنتجات */
 @media (max-width: 768px) {
      nav {
         display: none;
