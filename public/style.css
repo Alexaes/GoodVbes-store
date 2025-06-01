@@ -21,6 +21,7 @@ body {
     font-family: var(--font-family);
     background: var(--bg-color);
     color: var(--font-color);
+    scroll-behavior: smooth;
 }
 
 header {
@@ -215,7 +216,6 @@ nav ul li a:hover {
     padding-bottom: 10px;
   }
   
-  /* المنتجات */
   .cart-panel ul {
     list-style: none;
     padding: 0;
@@ -327,38 +327,60 @@ nav ul li a:hover {
 }
 
 .menu-toggle {
-    font-size: 1.5rem;
-    color: #fff;
-    cursor: pointer;
+  font-size: 1.5rem;      /* size of the icon */
+  color: #fff;            /* white color, change if background is white */
+  cursor: pointer;
+  padding: 10px;
+  width: 40px;            /* clickable width */
+  text-align: center;
+  user-select: none;      /* prevent text selection on click */
+  position: relative;     /* just in case for layering */
+  z-index: 1100;
 }
 
+/* Nav base style - hidden off screen */
+nav {
+  position: fixed;
+  top: 50px;  /* adjust depending on your header height */
+  left: -250px; /* hide to the left */
+  width: 250px;
+  height: calc(100% - 50px);
+  opacity: 0;
+  background: var(--header-bg);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1),;
+  z-index: 1000;
+  padding-top: 20px;
+}
+
+/* When active, slide nav in */
 nav.active {
-    display: block;
+  left: 0;
+  opacity: 1;
 }
 
-@media (max-width: 768px) {
-    /* إخفاء قائمة التنقل والأيقونات عند الشاشات الصغيرة */
-    nav, .header-icons {
-       display: none;
-    }
+/* Nav menu styling */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 
-    nav.active {
-        display: block;
-        position: absolute;
-        top: 88px;
-        left: 0;
-        width: 100%;
-        background: var(--header-bg);
-    }
-    nav.active ul {
-        flex-direction: column;
-        gap: 0;
-    }
-    nav.active ul li {
-        text-align: center;
-        padding: 10px 0;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
+nav ul li {
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+nav ul li a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .breadcrumbs-container {
@@ -411,12 +433,84 @@ section h2 {
     font-size: 1.8rem;
 }
 
-#products > h2,
-#packs > h2 {
+.categories-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.categories-container {
+  display: flex;
+  justify-content: center;
+  gap: 25%;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.category-box {
+  width: 180px;              /* fixed width for consistent size */
+  overflow: hidden;
+  margin: 0 10px;
+  cursor: pointer;
+  flex-shrink: 0;            /* prevent shrinking */
+  box-sizing: border-box;
+  position: relative;
+}
+
+.category-box img {
+  width: 100%;               /* make image fill its container */
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  display: block;            /* remove inline gap */
+}
+
+.category-box:hover img {
+  transform: scale(1.05);
+}
+
+.image-container {
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;               /* overlay covers full width */
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-size: 16px;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+#incense-burners > h2,
+#accessories > h2 {
     flex-basis: 100%;
 }
 
-#products, #packs {
+#incense-burners, #accessories  {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -426,7 +520,6 @@ section h2 {
     max-width: 1200px;
 }
 
-/* تنسيق المنتجات */
 .product { 
     flex: 1 1 calc(50% - 40px);
     max-width: calc(50% - 40px);
@@ -485,7 +578,6 @@ section h2 {
     transform: scale(1.1);
 }
 
-/* تنسيق الإشعارات */
 .notification {
     position: fixed;
     top: 20px;
@@ -532,7 +624,7 @@ section h2 {
       opacity: 0;
     }
 }
-/* COMPLETE ORDER PAGE STYLES */
+
 #complete-order {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;

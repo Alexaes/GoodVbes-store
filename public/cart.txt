@@ -299,3 +299,94 @@ h2 {
 #close-cart:hover {
   background-color: var(--secondary-color);
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="icon" type="image/png" href="photos/photo12.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        p {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+         
+        #links {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="logo">
+              <img src="photos/photo12.png" alt="Logo">
+            </a>
+          </div>
+          <div class="header-icons">
+            <a href="#" class="search-icon" onclick="toggleSearchBar()"><i class="fas fa-search"></i></a>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="ابحث هنا..." onkeydown="searchProducts(event)">
+      <button id="search-btn" onclick="performSearch()"><i class="fas fa-arrow-right"></i></button>
+    </div>
+            <a href="cart.html" class="cart-icon" id="cart-icon">
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cart-item-count">0</span>
+            </a>
+          </div>
+        </div>
+        <nav id="navbar">
+          <ul>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#packs">Packs</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-listings">
+          <div class="listings__item">
+            <a href="/" class="first-listing">Home</a>
+          </div>
+              <div class="listings__item">
+                <ion-icon name="chevron-back-outline" role="img" class="md flip-rtl hydrated"></ion-icon>
+              </div>
+              <div class="listings__item">
+                <span class="second-listing">Contact Us</span>
+              </div>
+        </div>
+      </div>
+    <section id="links">
+      <h2>Contact Us</h2>
+        <div class="centered-links">
+          <a class="link" href="https://www.instagram.com/lunorbelve">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a class="link" href="https://wa.link/yeo7ti">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a class="link" href="https://www.facebook.com/share/14wVZXpY95/">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a class="link" href="http://tiktok.me/_go0d_v1bes/">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+        <p>For inquiries, please reach out to us via our social media channels or email us at Exemple@gmail.com.</p> 
+</body>
+</html>

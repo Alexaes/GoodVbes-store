@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Politique de retour - Lunor Belve</title>
+  <link rel="icon" type="image/png" href="photos/photo12.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://kit.fontawesome.com/script.js" crossorigin="anonymous"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<style>
+  .return-policy-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    color: #222;
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  .return-policy-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .return-policy-container h2 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    color: #444;
+  }
+
+  .return-policy-container ul {
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+
+  .return-policy-container li {
+    margin-bottom: 10px;
+  }
+
+  .return-policy-container a {
+    color: #c758ff;
+    text-decoration: underline;
+  }
+
+  .return-policy-container a:hover {
+    text-decoration: none;
+  }
+</style>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="logo">
+        <img src="photos/photo12.png" alt="Logo">
+      </div>
+      <div class="header-icons">
+        <a href="#" class="search-icon" onclick="toggleSearchBar()"><i class="fas fa-search"></i></a>
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Rechercher..." onkeydown="searchProducts(event)">
+          <button id="search-btn" onclick="performSearch()"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <a href="cart.html" class="cart-icon" id="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-item-count">0</span>
+        </a>
+      </div>
+    </div>
+    <nav id="navbar">
+      <ul>
+        <li><a href="#products">Produits</a></li>
+        <li><a href="#packs">Packs</a></li>
+        <li><a href="ContactUs.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="breadcrumbs-container">
+    <div class="breadcrumbs-listings">
+      <div class="listings__item"><a href="/" class="first-listing">Accueil</a></div>
+      <div class="listings__item"><ion-icon name="chevron-back-outline"></ion-icon></div>
+      <div class="listings__item"><span class="second-listing">Politique de retour</span></div>
+    </div>
+  </div>
+
+  <div class="return-policy-container">
+    <h1>Politique de Retour</h1>
+  
+    <p>Chez <strong>Lunor Belve</strong>, la satisfaction de nos clients est notre priorité. Si vous n'êtes pas entièrement satisfait de votre achat, voici notre politique de retour :</p>
+  
+    <h2>Délai de Retour</h2>
+    <p>Vous disposez de 3 jours à compter de la date de réception pour retourner un article.</p>
+  
+    <h2>Conditions de Retour</h2>
+    <ul>
+      <li>L'article doit être inutilisé et en parfait état.</li>
+      <li>L'article doit être dans son emballage d'origine.</li>
+      <li>Les frais de retour sont à la charge du client sauf si l'article est défectueux.</li>
+    </ul>
+  
+    <h2>Remboursement</h2>
+    <p>Une fois le produit retourné et inspecté, nous vous rembourserons dans un délai de 5 à 10 jours ouvrables selon le mode de paiement initial.</p>
+  
+    <h2>Contact</h2>
+    <p>Pour initier un retour ou pour toute question, veuillez nous contacter via <a href="https://www.instagram.com/lunorbelve" target="_blank">@lunorbelve</a> ou sur WhatsApp via <a href="https://wa.link/yeo7ti" target="_blank">ce lien</a>.</p>
+  </div>
+  
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>LunorBelve</h2>
+        <p>Votre boutique de confiance pour la qualité et le style.</p>
+        <div class="footer-shipping">
+          <i class="fas fa-truck"></i>
+          <span>Livraison rapide & service fiable</span>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Liens utiles</h4>
+        <ul>
+          <li><a href="#products">Produits</a></li>
+          <li><a href="#packs">Packs</a></li>
+          <li><a href="ContactUs.html">Support</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Politique de retour</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Suivez-nous</h4>
+        <a href="https://www.instagram.com/lunorbelve" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/14wVZXpY95/"><i class="fab fa-facebook-f"></i></a>
+        <a href="http://tiktok.me/_go0d_v1bes/"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.link/yeo7ti"><i class="fab fa-whatsapp"></i></a>
+      </div>
+
+      <div class="footer-payment">
+        <h4>Méthodes de paiement</h4>
+        <i class="fab fa-cc-paypal"></i>
+        <i class="fas fa-hand-holding-usd"></i>
+        <i class="fas fa-university"></i>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 LunorBelve. Tous droits réservés.</p>
+      <p>Développé par <a href="https://www.instagram.com/i2x_c" target="_blank">@i2x_c</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

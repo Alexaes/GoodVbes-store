@@ -10,6 +10,7 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
   <style>
 body {
   background-color: #f9f9f9;
@@ -136,7 +137,6 @@ form#order-form button[type="submit"]:hover {
   box-shadow: 0 6px 14px rgba(27, 94, 32, 0.8);
 }
 
-/* Responsive */
 @media (max-width: 700px) {
   section#complete-order {
     padding: 30px 20px;
@@ -205,28 +205,105 @@ form#order-form button[type="submit"]:hover {
     
       <div id="payment-method">
         <h3>طريقة الدفع</h3>
-        <label><input type="radio" name="paymentMethod" value="الدفع عند الاستلام" checked> الدفع عند الاستلام</label><br>
-        <label><input type="radio" name="paymentMethod" value="باي بال"> باي بال</label><br>
-        <label><input type="radio" name="paymentMethod" value="تحويل بنكي"> تحويل بنكي</label><br>
-        <label><input type="radio" name="paymentMethod" value="أخرى"> أخرى</label><br>
-      </div>
+        <label><input type="radio" name="paymentMethod" value="cash-on-delivery" checked> الدفع عند الاستلام</label><br>
+        <label><input type="radio" name="paymentMethod" value="paypal"> باي بال</label><br>
+        <div id="paypal-button-container" style="margin-top: 20px; display: none;"></div>
+        <label><input type="radio" name="paymentMethod" value="bank-transfer"> تحويل بنكي</label><br>
+        <div id="bank-info" style="display: none; margin-top: 15px;">
+          <p><strong>veuillez transférer à </strong></p>
+          <p>CIH</p>
+          <p>HAFSA MAJOUG</p>
+          <p>IBAN: MA64 2307 8033 1581 4211 0126 0026</p>
+        </div>
     
       <button type="submit">إكمال</button>
     </form>
+  </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <h2>LunorBelve</h2>
+          <p>Your go-to store for quality and style.</p>
+          <div class="footer-shipping">
+            <i class="fas fa-truck"></i>
+            <span>Fast Delivery & Trusted Service</span>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#packs">Packs</a></li>
+            <li><a href="ContactUs.html">Support</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Return Policy</a></li>
+          </ul>
+        </div>
     
-        </section> 
-        <footer class="footer">
-         <section id="footer-link">
-         <div class="link">
-        Developed by <a href="https://www.instagram.com/2o7_v" target="_blank">2o7_v</a>
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <a href="https://www.instagram.com/lunorbelve" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/14wVZXpY95/"><i class="fab fa-facebook-f"></i></a>
+          <a href="http://tiktok.me/_go0d_v1bes/"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.link/yeo7ti"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    
+        <div class="footer-payment">
+          <h4>Payment Methods</h4>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fas fa-hand-holding-usd"></i>
+          <i class="fas fa-university"></i>
+        </div>
       </div>
-    </section>
-  </footer>
+    
+      <div class="footer-bottom">
+        <p>&copy; 2025 LunorBelve. All rights reserved.</p>
+        <p>Developed by <a href="https://www.instagram.com/i2x_c" target="_blank">@i2x_c</a></p>
+      </div>
+    </footer>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const orderData = JSON.parse(localStorage.getItem("cart")) || [];
-      document.getElementById("order").value = JSON.stringify(orderData);
-    });
+  document.addEventListener("DOMContentLoaded", function () {
+  const orderData = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("order").value = JSON.stringify(orderData);
+
+  const radios = document.querySelectorAll('input[name="paymentMethod"]');
+  const bankInfo = document.getElementById('bank-info');
+  const paypalContainer = document.getElementById('paypal-button-container');
+
+  function updatePaymentDisplay() {
+    let selectedValue = document.querySelector('input[name="paymentMethod"]:checked').value;
+    bankInfo.style.display = selectedValue === "bank-transfer" ? "block" : "none";
+    paypalContainer.style.display = selectedValue === "paypal" ? "block" : "none";
+  }
+
+  radios.forEach(radio => {
+    radio.addEventListener('change', updatePaymentDisplay);
+  });
+
+  updatePaymentDisplay();
+
+  if (typeof paypal !== "undefined") {
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '10.00'
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('تم الدفع بنجاح بواسطة: ' + details.payer.name.given_name);
+          localStorage.removeItem('cart');
+        });
+      }
+    }).render('#paypal-button-container');
+  }
+});
   </script>
 </body>
 </html>

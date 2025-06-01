@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="google-site-verification" content="CuuAPJD_21-yISeoPQpRRRjxrICDCtAZQTg24aKkkv8" />
-  <title>Contact Us</title>
+  <title>accessories</title>
   <link rel="icon" type="image/png" href="photos/photo12.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://kit.fontawesome.com/script.js" crossorigin="anonymous"></script>
@@ -12,69 +12,6 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-</head>
-<style>
-    body {
-      margin: 0;
-    }
-    .contact-section {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .contact-title {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-    }
-    .contact-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .form-box, .info-box {
-      flex: 1 1 300px;
-      background-color: #ffffff;
-      border: 1px solid #2d2d2d;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    .form-box, .info-box :hover {
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .form-box h2 {
-      margin-bottom: 30px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      background-color: #1a1a1a;
-      border: 1px solid #444;
-      color: white;
-      border-radius: 5px;
-      resize: none;
-    }
-    input::placeholder, textarea::placeholder {
-      color: #bbb;
-    }
-    .logo {
-      font-size: 40px;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-    .phone-box {
-      background-color: #c758ff;
-      color: white;
-      padding: 15px;
-      border-radius: 10px;
-      display: inline-block;
-      margin-top: 20px;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -92,12 +29,21 @@
   <input type="text" id="search-input" placeholder="ابحث هنا..." onkeydown="searchProducts(event)">
   <button id="search-btn" onclick="performSearch()"><i class="fas fa-arrow-right"></i></button>
 </div>
-        <a href="cart.html" class="cart-icon" id="cart-icon">
-          <i class="fas fa-shopping-cart"></i>
-          <span id="cart-item-count">0</span>
-        </a>
-      </div>
+    <div class="cart-icon" id="cart-icon" onclick="openCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cart-item-count">0</span>
     </div>
+<div id="cartPanel" class="cart-panel">
+  <div class="cart-header">
+    <span>votre panier</span>
+    <button id="close-cart" onclick="closeCart()"><i class="fa-thin fa-x"></i></button>
+  </div>
+  <ul id="cart-items"></ul>
+  <p id="cart-empty">Votre panier est vide</p>
+    <p>Montant Total: <span id="total-price">0</span> MAD</p>
+  <a id="checkout-button" href="complete-order.html" >Continuer vers le paiement</a>
+  <button id="clear-cart" onclick="clearCart()">مسح السلة</button>
+</div>
     <nav id="navbar">
       <ul>
         <li><a href="#products">Products</a></li>
@@ -106,7 +52,7 @@
       </ul>
     </nav>
   </header>
-<div class="breadcrumbs-container">
+  <div class="breadcrumbs-container">
     <div class="breadcrumbs-listings">
       <div class="listings__item">
         <a href="/" class="first-listing">Home</a>
@@ -115,34 +61,27 @@
             <ion-icon name="chevron-back-outline" role="img" class="md flip-rtl hydrated"></ion-icon>
           </div>
           <div class="listings__item">
-            <span class="second-listing">Contact Us</span>
+            <span class="second-listing">accessories</span>
           </div>
     </div>
   </div>
-
-  <section class="contact-section">
-    <h1 class="contact-title">Contactez Nous</h1>
-    <div class="contact-container">
-
-      <div class="form-box">
-        <h2>Envoyz nous un message</h2>
-        <form action="#" method="POST">
-          <input type="text" placeholder="أدخل اسمك" name="name" required>
-          <input type="text" placeholder="أدخل رقم هاتفك" name="phone" required>
-          <textarea rows="5" placeholder="اكتب رسالتك" name="message" required></textarea>
-          <button type="submit" style="padding: 12px 20px; background-color: #ec79b5; border: none; color: rgb(255, 255, 255); font-weight: bold; border-radius: 8px; cursor: pointer;">إرسال</button>
-        </form>
-      </div>
-
-      <div class="info-box">
-        <div class="logo">
-          <span>Lunor</span><span>belve</span>
-        </div>
-        <div class="phone-box">
-          <i class="fa fa-phone"></i> +212 695-443415
-        </div>
-      </div>
-
+  <section id="accessories">
+    <h2>Accessories</h2>
+    <div class="product">
+      <img src="photos/photo2.jpg" alt="باك الفخامة">
+      <h3>باك الفخامة</h3>
+      <p class="price">السعر: 109 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('باك الفخامة')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
+    </div>
+    <div class="product">
+      <img src="photos/photo3.jpg" alt="باك الأناقة">
+      <h3>باك الأناقة</h3>
+      <p class="price">السعر: 99 درهم</p>
+      <button class="add-to-cart" onclick="addToCart('باك الأناقة')">
+        <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+      </button>
     </div>
   </section>
 
@@ -156,15 +95,13 @@
           <span>Fast Delivery & Trusted Service</span>
         </div>
       </div>
-
+  
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#packs">Packs</a></li>
           <li><a href="ContactUs.html">Support</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Return Policy</a></li>
+          <li><a href="Q&A.html">FAQs</a></li>
+          <li><a href="ReturnPolicy.html">Return Policy</a></li>
         </ul>
       </div>
   
@@ -190,5 +127,29 @@
     </div>
   </footer>
 
+  <script>
+
+    function toggleMenu() {
+      const navbar = document.getElementById('navbar');
+      navbar.classList.toggle('active');
+    }
+
+    function addToCart(productName) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(productName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById('cart-item-count').textContent = cart.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCartCount();
+    });
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>

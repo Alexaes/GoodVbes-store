@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Questions & Réponses - Lunor Belve</title>
+  <link rel="icon" type="image/png" href="photos/photo12.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <script src="https://kit.fontawesome.com/script.js" crossorigin="anonymous"></script>
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+  <style>
+    .qa-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      color: #222;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .qa-container h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .qa-item {
+      margin-bottom: 20px;
+    }
+
+    .qa-item h2 {
+      font-size: 1.3rem;
+      color: #444;
+      cursor: pointer;
+      position: relative;
+      padding-right: 25px;
+      user-select: none;
+    }
+
+    .qa-item h2::after {
+      content: "\f107"; /* FontAwesome chevron-down */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+      color: #c758ff;
+    }
+
+    .qa-item.active h2::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .qa-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      margin-top: 8px;
+      padding-left: 10px;
+      border-left: 3px solid #c758ff;
+      color: #555;
+    }
+
+    .qa-item.active .qa-answer {
+      max-height: 1000px; /* large enough to show all content */
+    }
+
+    .qa-answer p,
+    .qa-answer ul {
+      margin: 0;
+      padding: 0 0 10px 0;
+    }
+
+    .qa-answer ul {
+      padding-left: 20px;
+    }
+
+    .qa-answer a {
+      color: #c758ff;
+      text-decoration: underline;
+    }
+
+    .qa-answer a:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="logo">
+        <img src="photos/photo12.png" alt="Logo" />
+      </div>
+      <div class="header-icons">
+        <a href="#" class="search-icon" onclick="toggleSearchBar()"
+          ><i class="fas fa-search"></i
+        ></a>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Rechercher..."
+            onkeydown="searchProducts(event)"
+          />
+          <button id="search-btn" onclick="performSearch()">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+        <a href="cart.html" class="cart-icon" id="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-item-count">0</span>
+        </a>
+      </div>
+    </div>
+    <nav id="navbar">
+      <ul>
+        <li><a href="#products">Produits</a></li>
+        <li><a href="#packs">Packs</a></li>
+        <li><a href="ContactUs.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="breadcrumbs-container">
+    <div class="breadcrumbs-listings">
+      <div class="listings__item">
+        <a href="/" class="first-listing">Accueil</a>
+      </div>
+      <div class="listings__item">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </div>
+      <div class="listings__item">
+        <span class="second-listing">Questions & Réponses</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-container">
+    <h1>Questions & Réponses (FAQ)</h1>
+
+    <div class="qa-item">
+      <h2>Comment puis-je passer une commande ?</h2>
+      <div class="qa-answer">
+        <p>
+          Vous pouvez passer une commande en parcourant nos produits, en
+          ajoutant vos articles au panier, puis en suivant le processus de
+          paiement sécurisé.
+        </p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <h2>Quels sont les modes de paiement acceptés ?</h2>
+      <div class="qa-answer">
+        <p>Nous acceptons :</p>
+        <ul>
+          <li>PayPal</li>
+          <li>Paiement à la livraison</li>
+          <li>Virement bancaire</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <h2>Quel est le délai de livraison ?</h2>
+      <div class="qa-answer">
+        <p>
+          La livraison est généralement effectuée sous 3 à 7 jours ouvrables,
+          selon votre localisation.
+        </p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <h2>Puis-je retourner un produit ?</h2>
+      <div class="qa-answer">
+        <p>
+          Oui, vous pouvez retourner un produit sous 3 jours à condition qu'il
+          soit inutilisé et dans son emballage d'origine.
+        </p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <h2>Comment contacter le service client ?</h2>
+      <div class="qa-answer">
+        <p>
+          Pour toute question, vous pouvez nous contacter via Insatagram
+          <a href="https://www.instagram.com/lunorbelve" target="_blank"
+            >@lunorbelve</a
+          >
+          ou sur WhatsApp via
+          <a href="https://wa.link/yeo7ti" target="_blank">ce lien</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>LunorBelve</h2>
+        <p>Votre boutique de confiance pour la qualité et le style.</p>
+        <div class="footer-shipping">
+          <i class="fas fa-truck"></i>
+          <span>Livraison rapide & service fiable</span>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Liens utiles</h4>
+        <ul>
+          <li><a href="#products">Produits</a></li>
+          <li><a href="#packs">Packs</a></li>
+          <li><a href="ContactUs.html">Support</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Politique de retour</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Suivez-nous</h4>
+        <a href="https://www.instagram.com/lunorbelve" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://www.facebook.com/share/14wVZXpY95/"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a href="http://tiktok.me/_go0d_v1bes/"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.link/yeo7ti"><i class="fab fa-whatsapp"></i></a>
+      </div>
+
+      <div class="footer-payment">
+        <h4>Méthodes de paiement</h4>
+        <i class="fab fa-cc-paypal"></i>
+        <i class="fas fa-hand-holding-usd"></i>
+        <i class="fas fa-university"></i>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 LunorBelve. Tous droits réservés.</p>
+      <p>
+        Développé par
+        <a href="https://www.instagram.com/i2x_c" target="_blank">@i2x_c</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle accordion Q&A
+    document.querySelectorAll(".qa-item h2").forEach((question) => {
+      question.addEventListener("click", () => {
+        const parent = question.parentElement;
+        parent.classList.toggle("active");
+      });
+    });
+
+    // Placeholder functions for header search/cart toggles (from your original)
+    function toggleMenu() {
+      const navbar = document.getElementById("navbar");
+      navbar.style.display =
+        navbar.style.display === "block" ? "none" : "block";
+    }
+    function toggleSearchBar() {
+      const searchContainer = document.querySelector(".search-container");
+      searchContainer.style.display =
+        searchContainer.style.display === "block" ? "none" : "block";
+      if (searchContainer.style.display === "block") {
+        document.getElementById("search-input").focus();
+      }
+    }
+    function searchProducts(e) {
+      if (e.key === "Enter") {
+        performSearch();
+      }
+    }
+    function performSearch() {
+      const query = document.getElementById("search-input").value.trim();
+      if (query) {
+        alert("Recherche pour: " + query);
+        // Implement search logic here
+      }
+    }
+  </script>
+</body>
+</html>
